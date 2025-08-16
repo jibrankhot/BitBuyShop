@@ -1,3 +1,4 @@
+/* === Desktop menu styles (unchanged) === */
 .main-menu {
   display: flex;
   gap: 40px;
@@ -143,6 +144,108 @@
 
       &:hover {
         background: #e0355e;
+      }
+    }
+  }
+}
+
+/* === Mobile menu styles (fixed active states & arrows) === */
+.mobile-menu-wrapper {
+  .mobile-tabs {
+    .mobile-tab {
+      border-bottom: 1px solid #eee;
+
+      /* Top-level tab */
+      h3 {
+        margin: 0;
+        padding: 14px 16px;
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+
+        &.active {
+          color: #ff3f6c; /* only top-level active */
+        }
+
+        .arrow {
+          transition: transform 0.3s ease;
+        }
+
+        .arrow.open {
+          transform: rotate(90deg);
+        }
+      }
+
+      .mobile-submenu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease, opacity 0.3s ease;
+        opacity: 0;
+
+        &.open {
+          max-height: 2000px; /* enough for multiple nested submenus */
+          opacity: 1;
+        }
+
+        .submenu-group {
+          h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin: 12px 0 6px;
+            padding: 0 16px;
+            color: #333; /* default text color */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+
+            &.active {
+              color: #ff3f6c; /* only clicked submenu highlights */
+            }
+
+            .arrow {
+              transition: transform 0.3s ease;
+            }
+
+            .arrow.open {
+              transform: rotate(90deg);
+            }
+          }
+
+          .submenu-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, opacity 0.3s ease;
+            opacity: 0;
+            padding-left: 16px;
+
+            li {
+              padding: 8px 0;
+            }
+
+            a {
+              font-size: 14px;
+              color: #444;
+              text-decoration: none;
+              display: block;
+              transition: color 0.2s ease;
+
+              &:hover {
+                color: #ff3f6c;
+              }
+            }
+          }
+
+          /* Only open submenu shows content */
+          &.open .submenu-list {
+            max-height: 1000px;
+            opacity: 1;
+          }
+        }
       }
     }
   }

@@ -1,61 +1,79 @@
-<!-- Desktop Menu -->
+<!-- Desktop Menu (unchanged) -->
 <ul *ngIf="!isMobile" class="main-menu">
   <li *ngFor="let item of menu_data; let i = index"
     [ngClass]="{'has-dropdown': item.drop_down && !item.mega_menu, 'has-mega-menu': item.mega_menu}">
+    <a [routerLink]="item.link">{{ item.title }}</a>
 
-    <a [routerLink]="item.link">
-      {{ item.title }}
-    </a>
-
-    <!-- existing desktop mega menus kept unchanged -->
+    <!-- Home mega menu -->
     <div *ngIf="item.home_pages" class="home-menu tp-submenu tp-mega-menu">
-      <!-- your old code stays -->
+      <!-- your original home mega menu code -->
     </div>
 
+    <!-- Shop mega menu -->
     <div *ngIf="item.shop_mega_menus" class="shop-mega-menu tp-submenu tp-mega-menu">
-      <!-- your old code stays -->
+      <!-- your original shop mega menu code -->
     </div>
 
+    <!-- Product menus -->
     <ul *ngIf="item.product_menus" class="tp-submenu tp-mega-menu mega-menu-style-2">
-      <li *ngFor="let prd_m of item.product_menus; let i = index" class="has-dropdown">
-        <a [routerLink]="prd_m.link" class="mega-menu-title">
-          {{ prd_m.title }}
-        </a>
+      <li *ngFor="let prd_m of item.product_menus" class="has-dropdown">
+        <a [routerLink]="prd_m.link" class="mega-menu-title">{{ prd_m.title }}</a>
         <ul class="tp-submenu">
-          <li *ngFor="let prd_sm of prd_m.dropdown_menus; let i = index">
+          <li *ngFor="let prd_sm of prd_m.dropdown_menus">
             <a [routerLink]="prd_sm.link">{{ prd_sm.title }}</a>
           </li>
         </ul>
       </li>
     </ul>
 
+    <!-- Simple dropdown menus -->
     <ul *ngIf="item.drop_down && !item.mega_menu" class="tp-submenu">
-      <li *ngFor="let drop_m of item.dropdown_menus; let i = index">
+      <li *ngFor="let drop_m of item.dropdown_menus">
         <a [routerLink]="drop_m.link">{{ drop_m.title }}</a>
       </li>
     </ul>
   </li>
 </ul>
 
-<!-- Mobile Menu (Myntra style) -->
+<!-- Mobile Menu -->
 <div *ngIf="isMobile" class="mobile-menu-wrapper">
-  <!-- Tabs -->
-  <ul class="mobile-tabs">
-    <li *ngFor="let item of menu_data; let i = index" (click)="activeTab = item"
-      [class.active]="activeTab?.id === item.id">
-      {{ item.title }}
-    </li>
-  </ul>
+  <div class="mobile-tabs">
+    <div *ngFor="let item of menu_data" class="mobile-tab">
 
-  <!-- Subcategories -->
-  <div class="mobile-submenu" *ngIf="activeTab">
-    <div *ngFor="let prd of activeTab.product_menus" class="submenu-group">
-      <h4>{{ prd.title }}</h4>
-      <ul>
-        <li *ngFor="let sm of prd.dropdown_menus">
-          <a [routerLink]="sm.link">{{ sm.title }}</a>
-        </li>
-      </ul>
+      <!-- Parent tab -->
+      <h3 (click)="toggleTab(item.id)" [class.active]="activeTabId === item.id">
+        {{ item.title }}
+        <span class="arrow" [class.open]="activeTabId === item.id">›</span>
+      </h3>
+
+      <!-- Submenu -->
+      <div class="mobile-submenu" [class.open]="activeTabId === item.id"
+        *ngIf="item.product_menus?.length || item.dropdown_menus?.length">
+
+        <!-- Product menus -->
+        <div *ngFor="let prd of item.product_menus; let j = index" class="submenu-group"
+          [class.open]="isSubmenuOpen(item.id, j)">
+          <h4 (click)="toggleSubmenu(item.id, j)" [class.active]="isSubmenuOpen(item.id, j)">
+            {{ prd.title }}
+            <span class="arrow" [class.open]="isSubmenuOpen(item.id, j)">›</span>
+          </h4>
+          <ul class="submenu-list">
+            <li *ngFor="let sm of prd.dropdown_menus" [hidden]="!isSubmenuOpen(item.id, j)">
+              <a [routerLink]="sm.link">{{ sm.title }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Dropdown menus (simple list) -->
+        <div *ngIf="item.dropdown_menus">
+          <ul>
+            <li *ngFor="let sm of item.dropdown_menus">
+              <a [routerLink]="sm.link">{{ sm.title }}</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>

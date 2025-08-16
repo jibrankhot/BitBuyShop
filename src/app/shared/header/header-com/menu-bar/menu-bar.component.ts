@@ -13,20 +13,34 @@ export class MenuBarComponent {
   @Input() isMobile: boolean = false;
 
   public menu_data: IMenuItem[] = menu_data;
-  public activeTab: IMenuItem | null = this.menu_data[0] ?? null;
 
-  public openSubmenuId: string | number | null = null;
+  public activeTabId: number | null = null; // Top-level menu
+  public openSubmenuIds: { [parentId: number]: Set<number> } = {}; // Nested submenus can track multiple opens
 
-  toggleTab(item: IMenuItem) {
-    this.activeTab = this.activeTab?.id === item.id ? null : item;
-    this.openSubmenuId = null;
+  // Toggle top-level menu
+  toggleTab(id: number) {
+    this.activeTabId = this.activeTabId === id ? null : id;
+    if (this.activeTabId === null) {
+      // Close all nested submenus when top-level closes
+      this.openSubmenuIds = {};
+    }
   }
 
-  toggleSubmenu(submenuId: string | number) {
-    this.openSubmenuId = this.openSubmenuId === submenuId ? null : submenuId;
+  // Toggle nested submenu
+  toggleSubmenu(parentId: number, subId: number) {
+    if (!this.openSubmenuIds[parentId]) {
+      this.openSubmenuIds[parentId] = new Set([subId]);
+    } else {
+      if (this.openSubmenuIds[parentId].has(subId)) {
+        this.openSubmenuIds[parentId].delete(subId);
+      } else {
+        this.openSubmenuIds[parentId].add(subId);
+      }
+    }
   }
 
-  isSubmenuOpen(submenuId: string | number): boolean {
-    return this.openSubmenuId === submenuId;
+  // Check if nested submenu is open
+  isSubmenuOpen(parentId: number, subId: number): boolean {
+    return this.openSubmenuIds[parentId]?.has(subId) || false;
   }
 }
