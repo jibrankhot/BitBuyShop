@@ -4,7 +4,6 @@
       <div id="header-sticky" [ngClass]="['tp-header-bottom-2 tp-header-sticky', sticky ? 'header-sticky' : '']">
          <div class="header-full-width d-flex align-items-center">
 
-            <!-- Hamburger (mobile only) -->
             <div class="tp-header-action-item d-lg-none" *ngIf="isMobile">
                <button (click)="utilsService.toggleMobileSidebar()" aria-label="Open Mobile Menu" class="hamburger-btn">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -13,14 +12,14 @@
                </button>
             </div>
 
-            <!-- Logo -->
-            <div class="logo flex-shrink-0 ps-3">
-               <a [routerLink]="['/home/fashion']">
-                  <img src="/assets/img/logo/logo.svg" alt="logo" />
-               </a>
-            </div>
+            <ng-container *ngIf="company">
+               <div class="logo flex-shrink-0 ps-3">
+                  <a [routerLink]="[company.logo.link]">
+                     <img [src]="company.logo.src" alt="logo" />
+                  </a>
+               </div>
+            </ng-container>
 
-            <!-- Desktop Menu -->
             <div class="container d-flex align-items-center justify-content-between">
                <div class="main-menu menu-style-2 flex-grow-1 d-none d-lg-block ps-4">
                   <nav class="tp-main-menu-content">
@@ -28,9 +27,7 @@
                   </nav>
                </div>
 
-               <!-- Right Actions -->
                <div class="tp-header-bottom-right d-flex align-items-center ms-4 flex-shrink-0">
-                  <!-- Search -->
                   <div class="tp-header-search-2 d-none d-sm-block me-3">
                      <form (ngSubmit)="handleSearchSubmit()">
                         <input type="text" placeholder="Search for Products..." [(ngModel)]="searchText"
@@ -83,8 +80,6 @@
    </div>
 </header>
 
-<!-- Cart Sidebar -->
 <app-cart-sidebar></app-cart-sidebar>
 
-<!-- ✅ Mobile Sidebar Component -->
 <app-mobile-sidebar></app-mobile-sidebar>

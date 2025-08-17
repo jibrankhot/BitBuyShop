@@ -1,0 +1,55 @@
+[
+    {
+        "logo": {
+            "src": "/assets/img/logo/logo.png",
+            "link": "/home/fashion"
+        },
+        "contact": {
+            "phone": "+91 9766896698",
+            "email": "techmark@mail.com",
+            "address": "Shop No 3 Gr Floor Shandar Market Opposite Mamta Hospital Bhiwandi Thane. 421302",
+            "addressLink": "https://www.google.com/maps/place/Shandar+Market+Opposite+Mamta+Hospital+Bhiwandi+Thane+421302/"
+        },
+        "sections": [
+            {
+                "title": "My Account",
+                "links": [
+                    { "label": "Track Orders", "url": "#" },
+                    { "label": "Shipping", "url": "#" },
+                    { "label": "Wishlist", "url": "#" },
+                    { "label": "My Account", "url": "#" },
+                    { "label": "Order History", "url": "#" },
+                    { "label": "Returns", "url": "#" }
+                ]
+            },
+            {
+                "title": "Information",
+                "links": [
+                    { "label": "Our Story", "url": "#" },
+                    { "label": "Careers", "url": "#" },
+                    { "label": "Privacy Policy", "url": "#" },
+                    { "label": "Terms & Conditions", "url": "#" },
+                    { "label": "Latest News", "url": "#" },
+                    { "label": "Contact Us", "url": "#" }
+                ]
+            }
+        ],
+        "subscribe": {
+            "title": "Subscribe.",
+            "description": "Our conversation is just getting started"
+        },
+        "social": {
+            "title": "Follow Us On",
+            "links": [
+                { "label": "Facebook", "url": "https://facebook.com" },
+                { "label": "Twitter", "url": "https://twitter.com" },
+                { "label": "Instagram", "url": "https://instagram.com" }
+            ]
+        },
+        "bottom": {
+            "copyright": "All Rights Reserved | Angular Template by Themepure",
+            "paymentImg": "/assets/img/footer/footer-pay-2.png",
+            "paymentAlt": "payment methods"
+        }
+    }
+]

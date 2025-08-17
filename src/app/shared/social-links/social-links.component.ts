@@ -1,38 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SharedModule } from '../../shared.module';
+import { CompanyLink } from '../../../assets/data/companydata/company.model';
 
 @Component({
-    selector: 'app-social-links',
-    templateUrl: './social-links.component.html',
-    styleUrls: ['./social-links.component.scss'],
-    imports: [SharedModule]
+  selector: 'app-social-links',
+  templateUrl: './social-links.component.html',
+  styleUrls: ['./social-links.component.scss'],
+  imports: [SharedModule],
+  standalone: true
 })
 export class SocialLinksComponent {
+  @Input() links: CompanyLink[] = [];
 
-  public social_data = [
-    {
-      id: 1,
-      link: 'https://www.facebook.com/',
-      icon: 'fa-brands fa-facebook-f',
-      title: 'Facebook'
-    },
-    {
-      id: 2,
-      link: 'https://twitter.com/',
-      icon: 'fa-brands fa-twitter',
-      title: 'Twitter'
-    },
-    {
-      id: 3,
-      link: 'https://www.linkedin.com/',
-      icon: 'fa-brands fa-linkedin-in',
-      title: 'Linkedin'
-    },
-    {
-      id: 4,
-      link: 'https://vimeo.com/',
-      icon: 'fa-brands fa-vimeo-v',
-      title: 'Vimeo'
-    },
-  ]
+  getIconClass(label: string): string {
+    switch (label.toLowerCase()) {
+      case 'facebook': return 'fa-brands fa-facebook-f';
+      case 'twitter': return 'fa-brands fa-twitter';
+      case 'instagram': return 'fa-brands fa-instagram';
+      case 'linkedin': return 'fa-brands fa-linkedin-in';
+      case 'vimeo': return 'fa-brands fa-vimeo-v';
+      default: return 'fa-solid fa-link';
+    }
+  }
 }

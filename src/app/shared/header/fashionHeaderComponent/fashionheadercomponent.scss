@@ -23,8 +23,12 @@
   display: flex;
   align-items: center;
 }
+
 .logo img {
-  max-height: 38px;
+  max-height: 50px;   /* 🔥 bigger on desktop */
+  height: auto;
+  width: auto;
+  object-fit: contain;
 }
 
 /* Desktop menu */
@@ -47,6 +51,7 @@
   display: flex;  
   position: relative;
 }
+
 @media (min-width: 992px) {
   .tp-header-action-item.d-lg-none {
     display: none !important;
@@ -90,9 +95,15 @@
   .tp-main-menu-content {
     display: none; /* hide desktop nav */
   }
+
+  .logo img {
+    max-height: 42px; /* ✅ smaller on tablet */
+  }
+
   .tp-header-search-2 input {
     width: 180px;
   }
+
   .tp-header-bottom-right {
     gap: 10px;
   }
@@ -101,5 +112,9 @@
 @media (max-width: 576px) {
   .tp-header-search-2 {
     display: none; /* hide search completely */
+  }
+
+  .logo img {
+    max-height: 40px; /* ✅ smallest on mobile */
   }
 }
