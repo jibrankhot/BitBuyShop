@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { SharedModule } from '../../shared.module';
 import { CartService } from '../../shared/services/cart.service';
-import { FooterOneComponent } from "../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../shared/footer/footer.component';
 import { NiceSelectComponent } from "../../shared/ui/nice-select/nice-select.component";
 import { LoginFormComponent } from "../../shared/components/forms/login-form/login-form.component";
 import { BreadcrumbOneComponent } from "../../shared/components/breadcrumb/breadcrumb-one/breadcrumb-one.component";
@@ -13,7 +13,7 @@ import { FashionHeaderComponent } from "../../shared/header/fashionHeaderCompone
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
-  imports: [SharedModule, FooterOneComponent, NiceSelectComponent, LoginFormComponent, BreadcrumbOneComponent, FashionHeaderComponent]
+  imports: [SharedModule, FooterComponent, NiceSelectComponent, LoginFormComponent, BreadcrumbOneComponent, FashionHeaderComponent]
 })
 export class CheckoutComponent {
 

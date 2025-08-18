@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SharedModule } from '../../shared.module';
 import coupon_data from '../../shared/data/coupon-data';
 import { ICoupon } from '../../shared/types/coupon-type';
-import { FooterOneComponent } from "../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../shared/footer/footer.component';
 import { CountdownTimerComponent } from "../../shared/components/countdown-timer/countdown-timer.component";
 import { BreadcrumbOneComponent } from "../../shared/components/breadcrumb/breadcrumb-one/breadcrumb-one.component";
 import { FashionHeaderComponent } from "../../shared/header/fashionHeaderComponent/fashionheadercomponent";
@@ -11,7 +11,7 @@ import { FashionHeaderComponent } from "../../shared/header/fashionHeaderCompone
   selector: 'app-coupon',
   templateUrl: './coupon.component.html',
   styleUrls: ['./coupon.component.scss'],
-  imports: [SharedModule, FooterOneComponent, CountdownTimerComponent, BreadcrumbOneComponent, FashionHeaderComponent]
+  imports: [SharedModule, FooterComponent, CountdownTimerComponent, BreadcrumbOneComponent, FashionHeaderComponent]
 })
 export class CouponComponent {
   public coupons = coupon_data;

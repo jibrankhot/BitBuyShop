@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../shared.module';
-import { FooterOneComponent } from "../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../shared/footer/footer.component';
 import { NiceSelectComponent } from "../../shared/ui/nice-select/nice-select.component";
 import { FashionHeaderComponent } from "../../shared/header/fashionHeaderComponent/fashionheadercomponent";
 
@@ -8,7 +8,7 @@ import { FashionHeaderComponent } from "../../shared/header/fashionHeaderCompone
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  imports: [SharedModule, FooterOneComponent, NiceSelectComponent, FashionHeaderComponent]
+  imports: [SharedModule, FooterComponent, NiceSelectComponent, FashionHeaderComponent]
 })
 export class ProfileComponent {
 

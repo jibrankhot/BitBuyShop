@@ -4,13 +4,13 @@ import { SharedModule } from '../../../shared.module';
 import { CartService } from '../../../shared/services/cart.service';
 import { FashionHeaderComponent } from "../../../shared/header/fashionHeaderComponent/fashionheadercomponent";
 import { BreadcrumbOneComponent } from "../../../shared/components/breadcrumb/breadcrumb-one/breadcrumb-one.component";
-import { FooterOneComponent } from "../../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../../shared/footer/footer.component';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
-  imports: [SharedModule, FashionHeaderComponent, BreadcrumbOneComponent, FooterOneComponent]
+  imports: [SharedModule, FashionHeaderComponent, BreadcrumbOneComponent, FooterComponent]
 })
 export class CartComponent {
 

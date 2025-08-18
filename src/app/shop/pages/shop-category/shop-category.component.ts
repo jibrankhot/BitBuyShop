@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { SharedModule } from '../../../shared.module';
 import { ICategory } from '../../../shared/types/category-type';
 import category_data from '../../../shared/data/category-data';
-import { FooterOneComponent } from "../../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../../shared/footer/footer.component';
 import { BreadcrumbOneComponent } from "../../../shared/components/breadcrumb/breadcrumb-one/breadcrumb-one.component";
 import { FashionHeaderComponent } from "../../../shared/header/fashionHeaderComponent/fashionheadercomponent";
 
@@ -11,7 +11,7 @@ import { FashionHeaderComponent } from "../../../shared/header/fashionHeaderComp
   selector: 'app-shop-category',
   templateUrl: './shop-category.component.html',
   styleUrls: ['./shop-category.component.scss'],
-  imports: [SharedModule, FooterOneComponent, BreadcrumbOneComponent, FashionHeaderComponent]
+  imports: [SharedModule, FooterComponent, BreadcrumbOneComponent, FashionHeaderComponent]
 })
 export class ShopCategoryComponent {
   public category_data: ICategory[] = category_data;

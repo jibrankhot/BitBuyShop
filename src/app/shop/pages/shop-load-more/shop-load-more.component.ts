@@ -8,7 +8,7 @@ import { FashionHeaderComponent } from "../../../shared/header/fashionHeaderComp
 import { BreadcrumbOneComponent } from "../../../shared/components/breadcrumb/breadcrumb-one/breadcrumb-one.component";
 import { CategoryFilterComponent } from "../../filtering/category-filter/category-filter.component";
 import { TopRatedProductsComponent } from "../../product/widget/top-rated-products/top-rated-products.component";
-import { FooterOneComponent } from "../../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../../shared/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderTopBarComponent } from '../../../shared/header/header-com/header-top-bar/header-top-bar.component';
 import { MenuBarComponent } from '../../../shared/header/header-com/menu-bar/menu-bar.component';
@@ -32,7 +32,7 @@ import { PriceFilterComponent } from '../../filtering/price-filter/price-filter.
     ReactiveFormsModule,
     ProductListItemComponent, ProductItemTwoComponent, NiceSelectComponent,
     BrandFilterComponent, ResetFilterRouteComponent, CategoryFilterComponent,
-    StatusFilterComponent, PriceFilterComponent, FashionHeaderComponent, BreadcrumbOneComponent, TopRatedProductsComponent, FooterOneComponent]
+    StatusFilterComponent, PriceFilterComponent, FashionHeaderComponent, BreadcrumbOneComponent, TopRatedProductsComponent, FooterComponent]
 })
 export class ShopLoadMoreComponent {
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../../shared.module';
 import { ShopAreaComponent } from "../../shop-area/shop-area.component";
-import { FooterOneComponent } from "../../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../../shared/footer/footer.component';
 import { BreadcrumbOneComponent } from "../../../shared/components/breadcrumb/breadcrumb-one/breadcrumb-one.component";
 import { FashionHeaderComponent } from "../../../shared/header/fashionHeaderComponent/fashionheadercomponent";
 
@@ -9,7 +9,7 @@ import { FashionHeaderComponent } from "../../../shared/header/fashionHeaderComp
     selector: 'app-shop-list',
     templateUrl: './shop-list.component.html',
     styleUrls: ['./shop-list.component.scss'],
-    imports: [SharedModule, ShopAreaComponent, FooterOneComponent, BreadcrumbOneComponent, FashionHeaderComponent]
+    imports: [SharedModule, ShopAreaComponent, FooterComponent, BreadcrumbOneComponent, FashionHeaderComponent]
 })
 export class ShopListComponent {
 

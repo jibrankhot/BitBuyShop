@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { SharedModule } from '../../../shared.module';
 import { IProduct } from '../../../shared/types/product-type';
 import { ProductService } from '../../../shared/services/product.service';
-import { FooterOneComponent } from "../../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../../shared/footer/footer.component';
 import { RelatedProductsComponent } from "../../product/related-products/related-products.component";
 import { ProductDetailsTabNavComponent } from "../../../shared/components/product-details-com/product-details-tab-nav/product-details-tab-nav.component";
 import { ProductDetailsWrapperComponent } from "../../../shared/components/product-details-com/product-details-wrapper/product-details-wrapper.component";
@@ -13,7 +13,7 @@ import { FashionHeaderComponent } from "../../../shared/header/fashionHeaderComp
   selector: 'app-product-details-gallery',
   templateUrl: './product-details-gallery.component.html',
   styleUrls: ['./product-details-gallery.component.scss'],
-  imports: [SharedModule, FooterOneComponent, RelatedProductsComponent, ProductDetailsTabNavComponent, ProductDetailsWrapperComponent, ShopDetailsBreadcrumbComponent, FashionHeaderComponent]
+  imports: [SharedModule, FooterComponent, RelatedProductsComponent, ProductDetailsTabNavComponent, ProductDetailsWrapperComponent, ShopDetailsBreadcrumbComponent, FashionHeaderComponent]
 })
 export class ProductDetailsGalleryComponent {
   public product!: IProduct;

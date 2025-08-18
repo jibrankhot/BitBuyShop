@@ -4,17 +4,17 @@ import { ViewportScroller } from '@angular/common';
 import { SharedModule } from '../../../shared.module';
 import { IProduct } from '../../../shared/types/product-type';
 import { ProductService } from '../../../shared/services/product.service';
-import { FooterOneComponent } from "../../../shared/footer/footer-one/footer-one.component";
 import { ShopAreaComponent } from "../../shop-area/shop-area.component";
 import { BreadcrumbOneComponent } from "../../../shared/components/breadcrumb/breadcrumb-one/breadcrumb-one.component";
 import { FashionHeaderComponent } from "../../../shared/header/fashionHeaderComponent/fashionheadercomponent";
+import { FooterComponent } from '../../../shared/footer/footer.component';
 
 @Component({
   selector: 'app-shop',
   standalone: true,
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss'],
-  imports: [SharedModule, FooterOneComponent, ShopAreaComponent, BreadcrumbOneComponent, FashionHeaderComponent]
+  imports: [SharedModule, FooterComponent, ShopAreaComponent, BreadcrumbOneComponent, FashionHeaderComponent]
 })
 export class ShopComponent {
   @Input() listStyle: boolean = false;

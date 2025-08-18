@@ -4,17 +4,17 @@ import { ViewportScroller } from '@angular/common';
 import { SharedModule } from '../../shared.module';
 import { IProduct } from '../../shared/types/product-type';
 import { ProductService } from '../../shared/services/product.service';
-import { FooterOneComponent } from "../../shared/footer/footer-one/footer-one.component";
 import { ProductItemTwoComponent } from "../../shop/product/fashion/product-item-two/product-item-two.component";
 import { NiceSelectComponent } from "../../shared/ui/nice-select/nice-select.component";
 import { BreadcrumbOneComponent } from "../../shared/components/breadcrumb/breadcrumb-one/breadcrumb-one.component";
 import { FashionHeaderComponent } from "../../shared/header/fashionHeaderComponent/fashionheadercomponent";
+import { FooterComponent } from '../../shared/footer/footer.component';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
-  imports: [SharedModule, FooterOneComponent, ProductItemTwoComponent, NiceSelectComponent, BreadcrumbOneComponent, FashionHeaderComponent]
+  imports: [SharedModule, FooterComponent, ProductItemTwoComponent, NiceSelectComponent, BreadcrumbOneComponent, FashionHeaderComponent]
 })
 export class SearchComponent {
   public products: IProduct[] = [];

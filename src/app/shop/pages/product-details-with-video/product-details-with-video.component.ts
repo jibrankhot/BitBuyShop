@@ -3,7 +3,7 @@ import { SharedModule } from '../../../shared.module';
 import { IProduct } from '../../../shared/types/product-type';
 import { ProductService } from '../../../shared/services/product.service';
 import { RelatedProductsComponent } from "../../product/related-products/related-products.component";
-import { FooterOneComponent } from "../../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../../shared/footer/footer.component';
 import { ProductDetailsTabNavComponent } from "../../../shared/components/product-details-com/product-details-tab-nav/product-details-tab-nav.component";
 import { ProductDetailsWrapperComponent } from "../../../shared/components/product-details-com/product-details-wrapper/product-details-wrapper.component";
 import { ProductDetailsThumbComponent } from "../../../shared/components/product-details-com/product-details-thumb/product-details-thumb.component";
@@ -15,7 +15,7 @@ import { FashionHeaderComponent } from "../../../shared/header/fashionHeaderComp
   selector: 'app-product-details-with-video',
   templateUrl: './product-details-with-video.component.html',
   styleUrls: ['./product-details-with-video.component.scss'],
-  imports: [SharedModule, RelatedProductsComponent, FooterOneComponent, ProductDetailsTabNavComponent, ProductDetailsWrapperComponent, ProductDetailsThumbComponent, ShopDetailsBreadcrumbComponent, FashionHeaderComponent]
+  imports: [SharedModule, RelatedProductsComponent, FooterComponent, ProductDetailsTabNavComponent, ProductDetailsWrapperComponent, ProductDetailsThumbComponent, ShopDetailsBreadcrumbComponent, FashionHeaderComponent]
 })
 export class ProductDetailsWithVideoComponent {
   public product!: IProduct;

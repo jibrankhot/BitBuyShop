@@ -15,14 +15,14 @@ import { TopRatedProductsComponent } from "../../product/widget/top-rated-produc
 import { ProductItemTwoComponent } from "../../product/fashion/product-item-two/product-item-two.component";
 import { ProductListItemComponent } from "../../product/widget/product-list-item/product-list-item.component";
 import { PaginationComponent } from "../../../shared/ui/pagination/pagination.component";
-import { FooterOneComponent } from "../../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../../shared/footer/footer.component';
 import { PriceFilterComponent } from '../../filtering/price-filter/price-filter.component';
 
 @Component({
   selector: 'app-shop-filter-dropdown',
   templateUrl: './shop-filter-dropdown.component.html',
   styleUrls: ['./shop-filter-dropdown.component.scss'],
-  imports: [SharedModule, PriceFilterComponent, FashionHeaderComponent, BreadcrumbOneComponent, NiceSelectComponent, StatusFilterComponent, CategoryFilterComponent, ResetFilterRouteComponent, TopRatedProductsComponent, ProductItemTwoComponent, ProductListItemComponent, PaginationComponent, FooterOneComponent]
+  imports: [SharedModule, PriceFilterComponent, FashionHeaderComponent, BreadcrumbOneComponent, NiceSelectComponent, StatusFilterComponent, CategoryFilterComponent, ResetFilterRouteComponent, TopRatedProductsComponent, ProductItemTwoComponent, ProductListItemComponent, PaginationComponent, FooterComponent]
 })
 export class ShopFilterDropdownComponent {
   public products: IProduct[] = [];

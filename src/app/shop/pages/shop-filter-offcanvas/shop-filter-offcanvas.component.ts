@@ -12,7 +12,7 @@ import { ProductItemTwoComponent } from "../../product/fashion/product-item-two/
 import { ProductListItemComponent } from "../../product/widget/product-list-item/product-list-item.component";
 import { PaginationComponent } from "../../../shared/ui/pagination/pagination.component";
 import { PriceFilterComponent } from '../../filtering/price-filter/price-filter.component';
-import { FooterOneComponent } from "../../../shared/footer/footer-one/footer-one.component";
+import { FooterComponent } from '../../../shared/footer/footer.component';
 import { ResetFilterRouteComponent } from "../../filtering/reset-filter-route/reset-filter-route.component";
 import { BrandFilterComponent } from "../../filtering/brand-filter/brand-filter.component";
 import { TopRatedProductsComponent } from "../../product/widget/top-rated-products/top-rated-products.component";
@@ -23,7 +23,7 @@ import { StatusFilterComponent } from "../../filtering/status-filter/status-filt
   selector: 'app-shop-filter-offcanvas',
   templateUrl: './shop-filter-offcanvas.component.html',
   styleUrls: ['./shop-filter-offcanvas.component.scss'],
-  imports: [SharedModule, PriceFilterComponent, FashionHeaderComponent, BreadcrumbOneComponent, NiceSelectComponent, ProductItemTwoComponent, ProductListItemComponent, PaginationComponent, FooterOneComponent, ResetFilterRouteComponent, BrandFilterComponent, TopRatedProductsComponent, CategoryFilterComponent, StatusFilterComponent]
+  imports: [SharedModule, PriceFilterComponent, FashionHeaderComponent, BreadcrumbOneComponent, NiceSelectComponent, ProductItemTwoComponent, ProductListItemComponent, PaginationComponent, FooterComponent, ResetFilterRouteComponent, BrandFilterComponent, TopRatedProductsComponent, CategoryFilterComponent, StatusFilterComponent]
 })
 export class ShopFilterOffcanvasComponent {
 
