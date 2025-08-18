@@ -9,7 +9,6 @@ import { FashionFeaturedProductsComponent } from "../../shop/product/fashion/fas
 import { FashionNewTrendingItemsComponent } from "../../shop/product/fashion/fashion-new-trending-items/fashion-new-trending-items.component";
 import { FashionBestSellItemsComponent } from "../../shop/product/fashion/fashion-best-sell-items/fashion-best-sell-items.component";
 import { FashionTestimonialComponent } from "../../shared/components/testimonial/fashion-testimonial/fashion-testimonial.component";
-import { FashionBlogAreaComponent } from "../../shared/components/blog/fashion/fashion-blog-area/fashion-blog-area.component";
 import { FeatureTwoComponent } from "../../shared/components/feature/feature-two/feature-two.component";
 import { InstagramAreaTwoComponent } from "../../shared/components/instagram/instagram-area-two/instagram-area-two.component";
 import { FooterTwoComponent } from '../../shared/footer/footer-two/footer-two.component';
@@ -18,7 +17,7 @@ import { FooterTwoComponent } from '../../shared/footer/footer-two/footer-two.co
   selector: 'app-fashion',
   templateUrl: './fashion.component.html',
   styleUrls: ['./fashion.component.scss'],
-  imports: [SharedModule, FashionHeaderComponent, HeroBannerTwoComponent, FashionCategoryComponent, FashionPopularProductsComponent, FashionAllProductsComponent, FashionFeaturedProductsComponent, FashionNewTrendingItemsComponent, FashionBestSellItemsComponent, FashionTestimonialComponent, FashionBlogAreaComponent, FeatureTwoComponent, InstagramAreaTwoComponent, FooterTwoComponent]
+  imports: [SharedModule, FashionHeaderComponent, HeroBannerTwoComponent, FashionCategoryComponent, FashionPopularProductsComponent, FashionAllProductsComponent, FashionFeaturedProductsComponent, FashionNewTrendingItemsComponent, FashionBestSellItemsComponent, FashionTestimonialComponent, FeatureTwoComponent, InstagramAreaTwoComponent, FooterTwoComponent]
 })
 export class FashionComponent {
   @Input() style_2: Boolean | undefined;
