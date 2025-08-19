@@ -1,59 +1,68 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import Swiper from 'swiper';
-import { Navigation, Pagination, EffectFade } from 'swiper/modules';
+import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/modules';
 import { SharedModule } from '../../../shared.module';
 import { DomUtilsService } from '../../services/dom-utils.service';
+
+// Import CSS (needed for swiper styles)
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 
 @Component({
   selector: 'app-hero-banner',
   templateUrl: './hero-banner.component.html',
   styleUrls: ['./hero-banner.component.scss'],
   imports: [SharedModule],
-  standalone: true
+  standalone: true,
 })
-export class HeroBannerComponent {
+export class HeroBannerComponent implements AfterViewInit {
   public slider_data = [
     {
       id: 1,
-      subtitle: "New Arrivals 2023",
-      title: "The Clothing Collection",
-      img: "/assets/img/slider/2/slider-1.png",
+      subtitle: 'New Arrivals 2023',
+      title: 'The Clothing Collection',
+      img: '/assets/img/slider/2/slider-1.png',
     },
     {
       id: 2,
-      subtitle: "Best Selling 2023",
-      title: "The Summer Collection",
-      img: "/assets/img/slider/2/slider-2.png",
+      subtitle: 'Best Selling 2023',
+      title: 'The Summer Collection',
+      img: '/assets/img/slider/2/slider-2.png',
     },
     {
       id: 3,
-      subtitle: "Winter Has Arrived",
-      title: "Amazing New designs",
-      img: "/assets/img/slider/2/slider-3.png",
+      subtitle: 'Winter Has Arrived',
+      title: 'Amazing New Designs',
+      img: '/assets/img/slider/2/slider-3.png',
     },
   ];
 
   constructor(private domUtil: DomUtilsService) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.domUtil.runInBrowser(() => {
-      // run swiper init only in browser
       new Swiper('.tp-slider-active-2', {
+        modules: [Navigation, Pagination, EffectFade, Autoplay],
         slidesPerView: 1,
         spaceBetween: 30,
-        loop: false,
+        loop: true,
         effect: 'fade',
-        modules: [Navigation, Pagination, EffectFade],
+        fadeEffect: { crossFade: true },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
         navigation: {
-          nextEl: ".tp-slider-2-button-next",
-          prevEl: ".tp-slider-2-button-prev",
+          nextEl: '.tp-slider-2-button-next',
+          prevEl: '.tp-slider-2-button-prev',
         },
         pagination: {
-          el: ".tp-slider-2-dot",
-          clickable: true
+          el: '.tp-slider-2-dot',
+          clickable: true,
         },
       });
     });
-
   }
 }
