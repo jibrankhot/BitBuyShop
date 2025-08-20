@@ -2,8 +2,8 @@
    <div class="tp-header-area tp-header-height"
       [ngClass]="[style_2 ? 'tp-header-style-primary' : 'tp-header-style-darkRed']">
       <div id="header-sticky" [ngClass]="['tp-header-bottom-2 tp-header-sticky', sticky ? 'header-sticky' : '']">
-         <div class="header-full-width d-flex align-items-center">
-
+         <div class="header-full-width">
+            <!-- Mobile Hamburger -->
             <div class="tp-header-action-item d-lg-none" *ngIf="isMobile">
                <button (click)="utilsService.toggleMobileSidebar()" aria-label="Open Mobile Menu" class="hamburger-btn">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -12,67 +12,83 @@
                </button>
             </div>
 
+            <!-- Logo -->
             <ng-container *ngIf="company">
-               <div class="logo flex-shrink-0 ps-3">
+               <div class="logo flex-shrink-0">
                   <a [routerLink]="[company.logo.link]">
                      <img [src]="company.logo.src" alt="logo" />
                   </a>
                </div>
             </ng-container>
 
-            <div class="container d-flex align-items-center justify-content-between">
-               <div class="main-menu menu-style-2 flex-grow-1 d-none d-lg-block ps-4">
-                  <nav class="tp-main-menu-content">
-                     <app-menu-bar></app-menu-bar>
-                  </nav>
+            <!-- Menu -->
+            <div class="main-menu d-none d-lg-block">
+               <nav class="tp-main-menu-content">
+                  <app-menu-bar></app-menu-bar>
+               </nav>
+            </div>
+
+            <!-- Search -->
+            <form class="tp-header-search-2" (ngSubmit)="handleSearchSubmit()">
+               <button type="submit" aria-label="Search" class="search-btn">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                     <path
+                        d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                     <path d="M18.9999 19L14.6499 14.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                  </svg>
+               </button>
+               <input type="text" placeholder="Search for products, brands and more" [(ngModel)]="searchText"
+                  name="searchText" />
+            </form>
+
+
+            <!-- Right Actions -->
+            <div class="tp-header-bottom-right flex-shrink-0">
+               <!-- Profile -->
+               <div class="tp-header-action-item">
+                  <a routerLink="/profile" class="tp-header-action-btn" aria-label="Profile">
+                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                        <path
+                           d="M11 11C13.7614 11 16 8.76142 16 6C16 3.23858 13.7614 1 11 1C8.23858 1 6 3.23858 6 6C6 8.76142 8.23858 11 11 11Z"
+                           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3 21C3 17.134 6.13401 14 10 14H12C15.866 14 19 17.134 19 21" stroke="currentColor"
+                           stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                     </svg>
+                     <span class="tp-header-action-label">Profile</span>
+                  </a>
                </div>
 
-               <div class="tp-header-bottom-right d-flex align-items-center ms-4 flex-shrink-0">
-                  <div class="tp-header-search-2 d-none d-sm-block me-3">
-                     <form (ngSubmit)="handleSearchSubmit()">
-                        <input type="text" placeholder="Search for Products..." [(ngModel)]="searchText"
-                           name="searchText" />
-                        <button type="submit" aria-label="Search">
-                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                              <path
-                                 d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z"
-                                 stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" />
-                              <path d="M18.9999 19L14.6499 14.65" stroke="currentColor" stroke-width="2"
-                                 stroke-linecap="round" stroke-linejoin="round" />
-                           </svg>
-                        </button>
-                     </form>
-                  </div>
+               <!-- Wishlist -->
+               <div class="tp-header-action-item">
+                  <a routerLink="/shop/wishlist" class="tp-header-action-btn" aria-label="Wishlist">
+                     <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z"
+                           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                     </svg>
+                     <span class="tp-header-action-label">Wishlist</span>
+                     <span class="tp-header-action-badge">
+                        {{ wishlistService.getWishlistProducts().length }}
+                     </span>
+                  </a>
+               </div>
 
-                  <!-- Wishlist -->
-                  <div class="tp-header-action-item d-lg-flex position-relative">
-                     <a routerLink="/shop/wishlist" class="tp-header-action-btn" aria-label="Wishlist">
-                        <svg width="22" height="20" viewBox="0 0 22 20" fill="none">
-                           <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z"
-                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <span class="tp-header-action-badge">
-                           {{wishlistService.getWishlistProducts().length}}
-                        </span>
-                     </a>
-                  </div>
-
-                  <!-- Cart -->
-                  <div class="tp-header-action-item position-relative">
-                     <button (click)="cartService.handleOpenCartSidebar()"
-                        class="tp-header-action-btn cartmini-open-btn" aria-label="Open Cart Sidebar">
-                        <svg width="21" height="22" viewBox="0 0 21 22" fill="none">
-                           <path fill-rule="evenodd" clip-rule="evenodd"
-                              d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z"
-                              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <span class="tp-header-action-badge">
-                           {{cartService.totalPriceQuantity().quantity}}
-                        </span>
-                     </button>
-                  </div>
+               <!-- Cart -->
+               <div class="tp-header-action-item">
+                  <button (click)="cartService.handleOpenCartSidebar()" class="tp-header-action-btn cartmini-open-btn"
+                     aria-label="Open Cart Sidebar">
+                     <svg width="21" height="22" viewBox="0 0 21 22" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                           d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z"
+                           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                     </svg>
+                     <span class="tp-header-action-label">Bag</span>
+                     <span class="tp-header-action-badge">
+                        {{ cartService.totalPriceQuantity().quantity }}
+                     </span>
+                  </button>
                </div>
             </div>
          </div>
@@ -81,5 +97,4 @@
 </header>
 
 <app-cart-sidebar></app-cart-sidebar>
-
 <app-mobile-sidebar></app-mobile-sidebar>
