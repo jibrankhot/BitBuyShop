@@ -1,8 +1,10 @@
 <header>
    <div class="tp-header-area tp-header-height"
       [ngClass]="[style_2 ? 'tp-header-style-primary' : 'tp-header-style-darkRed']">
+
       <div id="header-sticky" [ngClass]="['tp-header-bottom-2 tp-header-sticky', sticky ? 'header-sticky' : '']">
          <div class="header-full-width">
+
             <!-- Mobile Hamburger -->
             <div class="tp-header-action-item d-lg-none" *ngIf="isMobile">
                <button (click)="utilsService.toggleMobileSidebar()" aria-label="Open Mobile Menu" class="hamburger-btn">
@@ -14,7 +16,7 @@
 
             <!-- Logo -->
             <ng-container *ngIf="company">
-               <div class="logo flex-shrink-0">
+               <div class="logo">
                   <a [routerLink]="[company.logo.link]">
                      <img [src]="company.logo.src" alt="logo" />
                   </a>
@@ -43,9 +45,8 @@
                   name="searchText" />
             </form>
 
-
             <!-- Right Actions -->
-            <div class="tp-header-bottom-right flex-shrink-0">
+            <div class="tp-header-bottom-right">
                <!-- Profile -->
                <div class="tp-header-action-item">
                   <a routerLink="/profile" class="tp-header-action-btn" aria-label="Profile">

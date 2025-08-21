@@ -1,4 +1,4 @@
-/* Header */
+/* Header Wrapper */
 .header-full-width {
   width: 100%;
   display: flex;
@@ -6,125 +6,116 @@
   justify-content: space-between;
   background: #fff;
   height: 80px;
-  padding: 0 40px;
+  padding: 0 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
   font-family: 'Assistant', sans-serif;
 }
 
 /* Logo */
-.logo {
-  flex: 0 0 auto;
-  margin-right: 40px;
-
-  img {
-    max-height: 48px;
-    object-fit: contain;
-  }
+.logo img {
+  max-height: 40px;
+  object-fit: contain;
 }
 
 /* Menu */
-.main-menu {
-  flex: 0 0 auto;
-  margin-right: 40px;
+.main-menu nav {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;          /* slightly smaller like Myntra */
+  font-weight: 700;
+  color: #282c3f;
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+}
 
-  nav {
-    display: flex;
-    gap: 26px;               /* tighter gap like Myntra */
-    font-size: 14px;
-    font-weight: 600;
-    color: #282c3f;
-    text-transform: uppercase;
-    align-items: center;
-  }
+.main-menu nav a {
+  padding: 30px 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.main-menu nav a:hover {
+  border-bottom: 2px solid #ff3f6c; /* Myntra pink */
 }
 
 /* Search */
 .tp-header-search-2 {
-  flex: 1;
-  max-width: 600px;
-  min-width: 260px;
-
+  flex: 0 0 360px;           /* narrower search bar */
   display: flex;
   align-items: center;
   background: #f5f5f6;
-  border: 1px solid #eaeaec;
   border-radius: 4px;
   overflow: hidden;
-
-  .search-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #696e79;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 14px;         /* spacing like Myntra */
-    font-size: 18px;
-    flex: 0 0 auto;          /* lock width to content */
-    height: 42px;
-  }
-
-  input {
-    flex: 1;
-    height: 42px;
-    border: none;
-    outline: none;
-    font-size: 13px;
-    background: transparent;
-    color: #282c3f;
-    padding: 0;              /* remove left padding, icon handles spacing */
-  }
-
-  input::placeholder {
-    color: #94969f;
-    font-size: 13px;
-  }
 }
 
-/* Right Icons */
-.tp-header-bottom-right {
-  flex: 0 0 auto;
+.tp-header-search-2 .search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #696e79;
   display: flex;
   align-items: center;
-  gap: 30px;                 /* a little tighter than before */
-  margin-left: 40px;
-
-  .tp-header-action-item {
-    a,
-    button {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 18px;
-      color: #282c3f;
-      position: relative;
-      text-align: center;
-    }
-
-    .tp-header-action-label {
-      font-size: 11px;
-      font-weight: 500;
-      margin-top: 2px;
-      color: #282c3f;
-    }
-
-    .tp-header-action-badge {
-      position: absolute;
-      top: -4px;
-      right: -10px;
-      background: #ff3f6c;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 600;
-      border-radius: 50%;
-      padding: 1px 5px;
-      line-height: 1;
-    }
-  }
+  justify-content: center;
+  padding: 0 10px;
+  font-size: 16px;           /* slightly smaller */
+  height: 40px;
 }
 
-/* Hamburger Button */
+.tp-header-search-2 input {
+  flex: 1;
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 13px;
+  background: transparent;
+  color: #282c3f;
+}
+
+.tp-header-search-2 input::placeholder {
+  color: #94969f;
+  font-size: 13px;
+}
+
+/* Right Actions */
+.tp-header-bottom-right {
+  display: flex;
+  align-items: center;
+  gap: 28px;                 /* tighter spacing */
+  margin-left: 15px;
+}
+
+.tp-header-action-item a,
+.tp-header-action-item button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;           /* icons smaller */
+  color: #282c3f;
+  position: relative;
+  text-align: center;
+}
+
+.tp-header-action-label {
+  font-size: 10px;           /* smaller labels */
+  font-weight: 500;
+  margin-top: 2px;
+  color: #282c3f;
+}
+
+.tp-header-action-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: #ff3f6c;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 600;
+  border-radius: 50%;
+  padding: 1px 5px;
+  line-height: 1;
+}
+
+/* Hamburger (mobile) */
 .hamburger-btn {
   display: flex;
   align-items: center;
@@ -142,13 +133,13 @@
   }
 
   .tp-header-search-2 {
-    flex: 1 1 200px;
-    margin: 0 20px;
+    flex: 1 1 220px;
+    margin: 0 15px;
   }
 
   .tp-header-bottom-right {
-    gap: 24px;
-    margin-left: 20px;
+    gap: 20px;
+    margin-left: 15px;
   }
 }
 
@@ -158,7 +149,7 @@
   }
 
   .tp-header-bottom-right {
-    gap: 16px;
+    gap: 14px;
     margin-left: 10px;
   }
 }
