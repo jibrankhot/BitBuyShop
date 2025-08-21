@@ -1,4 +1,4 @@
-/* === Desktop menu styles (unchanged) === */
+/* === Desktop menu styles === */
 .main-menu {
   display: flex;
   gap: 20px;
@@ -32,131 +32,65 @@
   }
 }
 
-.dropdown-arrow {
-  font-size: 0.7em;
-  margin-left: 6px;
-  display: inline-block;
-  vertical-align: middle;
-  color: #ff3f6c;
-  user-select: none;
-}
-
+/* === Mega Menu (Myntra Style) === */
 .tp-submenu.tp-mega-menu {
-  position: fixed;
-  left: auto;
-  top: 79px;
+  position: fixed;      /* fixed under header */
+  top: 80px;            /* adjust = header height */
+  left: 0;
+  width: 100%;          /* full width */
   background: #fff;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: min-content;
-  column-gap: 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 0;
   opacity: 0;
   visibility: hidden;
-  z-index: 1000;
-  border-radius: 6px;
+  z-index: 999;
+  border-radius: 0;
   pointer-events: none;
-  overflow: hidden;
-
-  > *:nth-child(even) {
-    background-color: #f0f0f0;
-  }
-
-  > * {
-    padding: 10px 24px 20px;
-    min-width: 160px;
-  }
+  padding: 20px 40px;   /* spacing inside */
 }
 
 .main-menu > li:hover > .tp-submenu.tp-mega-menu {
-  left: 80px;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-.shop-mega-menu-list,
-.mega-menu-style-2 > li {
-  flex: none;
-  padding: 0;
-  min-width: 140px;
+/* Column styles */
+.tp-submenu.tp-mega-menu > li {
+  min-width: 180px;
+  padding: 0 20px;
 }
 
-.tp-submenu.tp-mega-menu .shop-mega-menu-title,
 .tp-submenu.tp-mega-menu .mega-menu-title {
   font-size: 14px;
   font-weight: 700;
   color: #ff3f6c !important;
   text-transform: uppercase;
-  margin-bottom: 14px;
-  line-height: 1.2;
-  letter-spacing: 0.5px;
+  margin-bottom: 10px;
   display: block;
-}
-
-.tp-submenu.tp-mega-menu ul {
-  margin: 0;
-  padding: 0;
 }
 
 .tp-submenu.tp-mega-menu li a {
   display: block;
   font-size: 13px;
   color: #4a4a4a;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   line-height: 1.3;
-  padding: 4px 6px;
-  border-radius: 4px;
   transition: all 0.25s ease;
 
   &:hover {
     color: #ff3f6c;
-    background-color: rgba(255, 63, 108, 0.08);
-    padding-left: 10px;
   }
 }
 
-.shop-mega-menu-img {
-  position: relative;
-
-  img {
-    width: 100%;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
-    object-fit: cover;
-    height: 140px;
-  }
-
-  .shop-mega-menu-btn {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-
-    a {
-      background: #ff3f6c;
-      color: white;
-      padding: 7px 14px;
-      font-size: 13px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      font-weight: 700;
-      box-shadow: 0 2px 8px rgba(255, 63, 108, 0.4);
-      transition: background 0.25s ease;
-
-      &:hover {
-        background: #e0355e;
-      }
-    }
-  }
-}
-
-/* === Mobile menu styles (fixed active states & arrows) === */
+/* === Mobile menu styles (unchanged) === */
 .mobile-menu-wrapper {
   .mobile-tabs {
     .mobile-tab {
       border-bottom: 1px solid #eee;
 
-      /* Top-level tab */
       h3 {
         margin: 0;
         padding: 14px 16px;
@@ -169,7 +103,7 @@
         cursor: pointer;
 
         &.active {
-          color: #ff3f6c; /* only top-level active */
+          color: #ff3f6c;
         }
 
         .arrow {
@@ -188,7 +122,7 @@
         opacity: 0;
 
         &.open {
-          max-height: 2000px; /* enough for multiple nested submenus */
+          max-height: 2000px;
           opacity: 1;
         }
 
@@ -198,14 +132,14 @@
             font-weight: 600;
             margin: 12px 0 6px;
             padding: 0 16px;
-            color: #333; /* default text color */
+            color: #333;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
 
             &.active {
-              color: #ff3f6c; /* only clicked submenu highlights */
+              color: #ff3f6c;
             }
 
             .arrow {
@@ -241,7 +175,6 @@
             }
           }
 
-          /* Only open submenu shows content */
           &.open .submenu-list {
             max-height: 1000px;
             opacity: 1;

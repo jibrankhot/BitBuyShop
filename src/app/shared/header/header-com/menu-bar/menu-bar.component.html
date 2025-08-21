@@ -1,4 +1,4 @@
-<!-- Desktop Menu (unchanged) -->
+<!-- Desktop Menu -->
 <ul *ngIf="!isMobile" class="main-menu">
   <li *ngFor="let item of menu_data; let i = index"
     [ngClass]="{'has-dropdown': item.drop_down && !item.mega_menu, 'has-mega-menu': item.mega_menu}">
@@ -14,7 +14,7 @@
       <!-- your original shop mega menu code -->
     </div>
 
-    <!-- Product menus -->
+    <!-- Product mega menu -->
     <ul *ngIf="item.product_menus" class="tp-submenu tp-mega-menu mega-menu-style-2">
       <li *ngFor="let prd_m of item.product_menus" class="has-dropdown">
         <a [routerLink]="prd_m.link" class="mega-menu-title">{{ prd_m.title }}</a>
@@ -64,7 +64,7 @@
           </ul>
         </div>
 
-        <!-- Dropdown menus (simple list) -->
+        <!-- Dropdown menus -->
         <div *ngIf="item.dropdown_menus">
           <ul>
             <li *ngFor="let sm of item.dropdown_menus">
