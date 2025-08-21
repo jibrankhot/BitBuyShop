@@ -2,6 +2,7 @@
 .main-menu {
   display: flex;
   gap: 20px;
+   height: 80px;
   justify-content: center;
   align-items: center;
 
@@ -13,6 +14,7 @@
       font-weight: 600;
       color: #3b3b3b;
       padding: 6px 0;
+     
       text-transform: capitalize;
       display: inline-flex;
       align-items: center;
@@ -23,36 +25,35 @@
         color: #ff3f6c;
       }
     }
-
-    &:hover > .tp-submenu {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
   }
 }
 
-/* === Mega Menu (Myntra Style, Centered with 20% gap) === */
+/* === Mega Menu (Myntra Style, Centered with gap) === */
 .tp-submenu.tp-mega-menu {
   position: fixed;
   top: 80px;
-  left: 10%;            /* leave 10% space on left */
-  width: 80%;           /* take only middle 80% */
+  left: 10%;             /* leave 10% space on left */
+  width: 80%;            /* take only middle 80% */
   background: #fff;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
   display: flex;
-  flex-wrap: wrap;       /* allow wrapping */
+  flex-wrap: wrap;        /* allow wrapping */
   justify-content: flex-start;
-  gap: 20px;             /* space between items */
+  gap: 10px;              /* space between items */
   opacity: 0;
   visibility: hidden;
   z-index: 999;
   border-radius: 0;
   pointer-events: none;
-  padding: 20px 40px;    /* inner padding */
+
+  /* safe hover gap fix */
+  margin-top: -10px;      /* pull closer to menu */
+  padding: 30px 40px 20px;/* extra top padding = safe hover zone */
 }
 
-.main-menu > li:hover > .tp-submenu.tp-mega-menu {
+/* === Show mega menu when parent OR submenu is hovered === */
+.main-menu > li:hover > .tp-submenu.tp-mega-menu,
+.tp-submenu.tp-mega-menu:hover {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -60,7 +61,7 @@
 
 /* === Column styles (flexible columns) === */
 .tp-submenu.tp-mega-menu > li {
-  flex: 1 1 180px;       /* flexible columns, min width 180px */
+  flex: 1 1 180px;        /* flexible columns, min width 180px */
   padding: 0 10px;
 }
 
