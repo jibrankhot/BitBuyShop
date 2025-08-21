@@ -28,18 +28,25 @@
 
       <!-- Search -->
       <div class="search-container">
-         <form class="tp-header-search-2" (ngSubmit)="handleSearchSubmit()">
-            <button type="submit" aria-label="Search" class="search-btn">
+         <form class="search-wrapper" (ngSubmit)="handleSearchSubmit()">
+
+            <!-- Icon button -->
+            <button type="submit" aria-label="Search" class="search-icon">
                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M9 17C13.4 17 17 13.4 17 9C17 4.6 13.4 1 9 1C4.6 1 1 4.6 1 9C1 13.4 4.6 17 9 17Z"
                      stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                   <path d="M19 19L14.6 14.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                </svg>
             </button>
-            <input type="text" placeholder="Search for products, brands and more" [(ngModel)]="searchText"
-               name="searchText" />
+
+            <!-- Input -->
+            <div class="tp-header-search-2">
+               <input type="text" placeholder="Search for products, brands and more" [(ngModel)]="searchText"
+                  name="searchText" />
+            </div>
          </form>
       </div>
+
 
       <!-- Right Actions -->
       <div class="tp-header-bottom-right">
