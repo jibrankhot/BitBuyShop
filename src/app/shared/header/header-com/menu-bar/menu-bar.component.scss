@@ -1,13 +1,10 @@
-/* ================================
-   DESKTOP MENU STYLES
-================================ */
 .main-menu {
   display: flex;
   gap: 20px;
   height: 80px;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 1px solid #eaeaec; /* underline between menu & mega menu */
+  border-bottom: 1px solid #eaeaec;
 }
 
 .main-menu > li {
@@ -19,7 +16,7 @@
   position: relative;
   font-size: 15px;
   font-weight: 600;
-  color: #2d2d2d; /* slightly lighter grey-black */
+  color: #2d2d2d;
   padding: 0 15px;
   text-transform: capitalize;
   display: flex;
@@ -29,7 +26,6 @@
   transition: color 0.3s ease;
 }
 
-/* underline effect (Myntra-style) */
 .main-menu > li > a::after {
   content: "";
   position: absolute;
@@ -43,10 +39,9 @@
   transition: transform 0.25s ease;
 }
 
-/* Hover & Active state */
 .main-menu > li:hover > a,
 .main-menu > li.active > a {
-  color: #111; /* darker hover */
+  color: #111;
   font-weight: 600;
 }
 
@@ -55,9 +50,6 @@
   transform: scaleX(1);
 }
 
-/* ================================
-   MEGA MENU (Myntra-style)
-================================ */
 .tp-submenu.tp-mega-menu {  
   position: fixed;
   top: 80px;
@@ -67,22 +59,21 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 16px 30px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0;
+  align-items: start;
 
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   z-index: 999;
 
-  margin-top: 0;
-  padding: 20px 40px;
+  padding: 20px 0;
 
   transition: opacity 0.25s ease, transform 0.25s ease;
   transform: translateY(10px);
 }
 
-/* Show mega menu on hover */
 .main-menu > li:hover > .tp-submenu.tp-mega-menu,
 .tp-submenu.tp-mega-menu:hover {
   opacity: 1;
@@ -91,72 +82,58 @@
   transform: translateY(0);
 }
 
-/* === Column styles === */
 .tp-submenu.tp-mega-menu > li {
   min-width: 160px;
+  width: 100%; /* Added: forces each li to fill its grid column */
+  box-sizing: border-box; /* Added: ensures padding doesn't break column width */
   list-style: none;
-  padding: 0 8px;
+  padding: 10px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-/* Alternate light grey columns */
 .tp-submenu.tp-mega-menu > li:nth-child(even) {
-  background-color: #f7f7f7; /* lighter than before */
-  border-radius: 4px;
-  padding: 10px 8px;
+  background-color: #f7f7f7;
 }
 
-/* Column title (Myntra pink + uppercase) */
 .tp-submenu.tp-mega-menu .mega-menu-title {
   font-size: 12px;
   font-weight: 700;
   color: #ff3f6c !important;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   display: block;
   line-height: 18px;
 }
 
-/* Mega menu links */
 .tp-submenu.tp-mega-menu li a {
   display: block;
   font-size: 14px;
   font-weight: 400;
-  color: #2a2a2a; /* lighter dark */
+  color: #2a2a2a;
   padding: 4px 0;
   line-height: 20px;
   text-transform: none !important;
   transition: color 0.25s ease;
 }
 
-/* Hover effect (stronger) */
 .tp-submenu.tp-mega-menu li a:hover {
-  color: #000; /* strong black hover */
+  color: #000;
   font-weight: 600;
-  text-decoration: none;
 }
 
-/* Highlighted link */
 .tp-submenu.tp-mega-menu li a.highlight {
   color: #ff3f6c;
   font-weight: 600;
 }
 
-/* Section divider */
 .tp-submenu.tp-mega-menu li.section-divider {
   border-bottom: 1px solid #eaeaec;
   margin: 8px 0;
 }
 
-/* Remove heavy column borders */
-.tp-submenu.tp-mega-menu > li:not(:last-child) {
-  border-right: none;
-  padding-right: 0;
-  margin-right: 0;
-}
-
-/* ================================
-   MOBILE MENU STYLES
-================================ */
 .mobile-menu-wrapper {
   .mobile-tabs {
     .mobile-tab {
