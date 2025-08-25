@@ -21,7 +21,7 @@ import { CompanyService } from '../../../../assets/data/companydata/company.serv
 })
 export class FashionHeaderComponent {
   @Input() style_2: boolean = false;
-
+  isProfileOpen = false;
   public searchText: string = '';
   public sticky: boolean = false;
   public isMobile: boolean = false;

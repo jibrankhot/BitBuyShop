@@ -47,11 +47,13 @@
 
       <!-- Right Actions -->
       <div class="tp-header-bottom-right">
-
          <!-- Profile -->
-         <div class="profile-container">
+         <div class="profile-container" [class.open]="isProfileOpen" (mouseenter)="!isMobile && (isProfileOpen = true)"
+            (mouseleave)="!isMobile && (isProfileOpen = false)">
+
             <div class="tp-header-action-item">
-               <a routerLink="/profile" class="tp-header-action-btn" aria-label="Profile">
+               <a (click)="isMobile ? (isProfileOpen = !isProfileOpen) : null" class="tp-header-action-btn"
+                  aria-label="Profile">
                   <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
                      <path d="M11 11C13.7 11 16 8.7 16 6C16 3.2 13.7 1 11 1C8.2 1 6 3.2 6 6C6 8.7 8.2 11 11 11Z"
                         stroke="currentColor" stroke-width="1.5" />
@@ -60,8 +62,29 @@
                   </svg>
                   <span class="tp-header-action-label">Profile</span>
                </a>
+
+               <!-- Dropdown -->
+               <div class="profile-dropdown" *ngIf="isProfileOpen">
+                  <a routerLink="/profile">
+                     <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5Z" stroke="currentColor" />
+                        <path d="M4 22c0-4 4-7 8-7s8 3 8 7" stroke="currentColor" />
+                     </svg>
+                     <span>My Account</span>
+                  </a>
+
+
+                  <a routerLink="/logout" class="logout">
+                     <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" stroke="currentColor" />
+                        <path d="M10 17l5-5-5-5M15 12H3" stroke="currentColor" />
+                     </svg>
+                     <span>Logout</span>
+                  </a>
+               </div>
             </div>
          </div>
+
 
          <!-- Wishlist -->
          <div class="wishlist-container">

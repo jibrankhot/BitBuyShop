@@ -1,0 +1,82 @@
+{
+  "user": {
+    "id": "u123",
+    "name": "Jibran Khan",
+    "email": "jibran@example.com",
+    "phone": "+91 9876543210",
+    "gender": "male",
+    "avatar": "assets/images/profile/default-avatar.png"
+  },
+  "stats": {
+    "totalOrders": 12,
+    "wishlist": 8,
+    "pending": 3,
+    "canceled": 2
+  },
+  "addresses": [
+    {
+      "id": "addr1",
+      "type": "Home",
+      "address": "123 Green Street, Delhi, India",
+      "city": "Delhi",
+      "zip": "110001",
+      "isDefault": true
+    },
+    {
+      "id": "addr2",
+      "type": "Office",
+      "address": "45 Corporate Plaza, Bangalore, India",
+      "city": "Bangalore",
+      "zip": "560001",
+      "isDefault": false
+    }
+  ],
+  "orders": [
+    {
+      "id": "#2245",
+      "title": "Blue Denim Jacket",
+      "status": "Pending",
+      "action": "Invoice"
+    },
+    {
+      "id": "#2220",
+      "title": "White Cotton Shirt",
+      "status": "Need your reply",
+      "action": "Reply"
+    },
+    {
+      "id": "#2125",
+      "title": "Leather Wallet",
+      "status": "Resolved",
+      "action": "Invoice"
+    },
+    {
+      "id": "#2124",
+      "title": "Running Shoes",
+      "status": "On Hold",
+      "action": "Status"
+    }
+  ],
+  "notificationSettings": [
+    {
+      "id": "like",
+      "label": "Like & Follows Notifications",
+      "enabled": true
+    },
+    {
+      "id": "post",
+      "label": "Post, Comments & Replies Notifications",
+      "enabled": true
+    },
+    {
+      "id": "new",
+      "label": "New Product Notifications",
+      "enabled": false
+    }
+  ],
+  "password": {
+    "old": "",
+    "new": "",
+    "confirm": ""
+  }
+}

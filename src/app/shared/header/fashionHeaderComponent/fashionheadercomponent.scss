@@ -198,3 +198,67 @@
   .search-container { display: none; }
   .tp-header-bottom-right { gap: 10px; }
 }
+
+
+/* Profile Dropdown */
+.profile-container {
+  position: relative;
+}
+
+.profile-dropdown {
+   position: absolute;
+  top: 100%;
+  left: 50%;                  /* start from center of button */
+  transform: translateX(-50%); /* shift half of dropdown width to center */
+  background: #fff;
+  border: 1px solid #eaeaec;
+  border-radius: 4px;
+  min-width: 180px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+/* Dropdown items */
+.profile-dropdown a {
+  display: flex;
+  align-items: center;       /* Align icon + text in same line */
+  gap: 8px;                  /* Space between icon and text */
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #282c3f;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 1.4;
+  transition: background 0.2s, color 0.2s;
+}
+
+.profile-dropdown a svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  display: block;   /* works fine with flex, no vertical-align needed */
+}
+
+/* Hover effect */
+.profile-dropdown a:hover {
+  background: #f5f5f6;
+  color: #ff3f6c;
+}
+
+/* Divider between items */
+.profile-dropdown a + a {
+  border-top: 1px solid #eaeaec;
+}
+
+/* Special style for logout */
+.profile-dropdown a.logout {
+  color: #ff3f6c;
+}
+
+.profile-dropdown a.logout:hover {
+  background: #fff0f3;
+  color: #d81b60;
+}
