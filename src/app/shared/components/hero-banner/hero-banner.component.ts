@@ -23,19 +23,19 @@ export class HeroBannerComponent implements AfterViewInit {
       id: 1,
       subtitle: 'New Arrivals 2023',
       title: 'The Clothing Collection',
-      img: '/assets/img/slider/2/slider-1.png',
+      img: '/assets/img/slider/slider1.webp',
     },
     {
       id: 2,
       subtitle: 'Best Selling 2023',
       title: 'The Summer Collection',
-      img: '/assets/img/slider/2/slider-2.png',
+      img: '/assets/img/slider/slider2.webp',
     },
     {
       id: 3,
       subtitle: 'Winter Has Arrived',
       title: 'Amazing New Designs',
-      img: '/assets/img/slider/2/slider-3.png',
+      img: '/assets/img/slider/slider3.webp',
     },
   ];
 

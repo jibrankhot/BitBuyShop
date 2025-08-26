@@ -1,16 +1,38 @@
 import { Component } from '@angular/core';
-import { SharedModule } from '../../shared.module';
-import { FashionHeaderComponent } from "../../shared/header/fashionHeaderComponent/fashionheadercomponent";
-import { SocialLoginComponent } from "../../shared/components/social-login/social-login.component";
-import { LoginFormComponent } from "../../shared/components/forms/login-form/login-form.component";
-import { FooterComponent } from '../../shared/footer/footer.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    imports: [SharedModule, FashionHeaderComponent, SocialLoginComponent, LoginFormComponent, FooterComponent]
+    standalone: true,
+    imports: [CommonModule, FormsModule, ReactiveFormsModule]
 })
 export class LoginComponent {
+    isSignUp = false;
+    signupForm: FormGroup;
+    signinForm: FormGroup;
 
+    constructor(private fb: FormBuilder) {
+        this.signupForm = this.fb.group({
+            name: [''],
+            email: [''],
+            password: ['']
+        });
+
+        this.signinForm = this.fb.group({
+            email: [''],
+            password: ['']
+        });
+    }
+
+    onSignup() {
+        console.log('Signup data:', this.signupForm.value);
+    }
+
+    onSignin() {
+        console.log('Signin data:', this.signinForm.value);
+    }
 }

@@ -5,15 +5,15 @@ import { SharedModule } from '../../shared.module';
 import { CartService } from '../../shared/services/cart.service';
 import { FooterComponent } from '../../shared/footer/footer.component';
 import { NiceSelectComponent } from "../../shared/ui/nice-select/nice-select.component";
-import { LoginFormComponent } from "../../shared/components/forms/login-form/login-form.component";
 import { BreadcrumbOneComponent } from "../../shared/components/breadcrumb/breadcrumb-one/breadcrumb-one.component";
 import { FashionHeaderComponent } from "../../shared/header/fashionHeaderComponent/fashionheadercomponent";
+import { LoginComponent } from '../login/login.component';
 
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
-  imports: [SharedModule, FooterComponent, NiceSelectComponent, LoginFormComponent, BreadcrumbOneComponent, FashionHeaderComponent]
+  imports: [SharedModule, FooterComponent, NiceSelectComponent, LoginComponent, BreadcrumbOneComponent, FashionHeaderComponent]
 })
 export class CheckoutComponent {
 

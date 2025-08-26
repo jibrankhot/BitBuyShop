@@ -1,64 +1,64 @@
-<!-- header start -->
-<app-fashion-header [style_2]="true"></app-fashion-header>
-<!-- header end -->
+<div class="auth-wrapper">
+  <div class="auth-container" [ngClass]="{ 'right-panel-active': isSignUp }">
 
-<main>
-  <!-- breadcrumb area start -->
-  <section class="breadcrumb__area include-bg text-center pt-95 pb-50">
-    <div class="container">
-      <div class="row">
-        <div class="col-xxl-12">
-          <div class="breadcrumb__content p-relative z-index-1">
-            <h3 class="breadcrumb__title">My account</h3>
-            <div class="breadcrumb__list">
-              <span><a href="#">Home</a></span>
-              <span>My account</span>
-            </div>
-          </div>
+    <!-- SIGN UP Panel -->
+    <div class="form-container sign-up-container">
+      <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <h2>Create Account</h2>
+        <div class="social-login">
+          <button type="button"><i class="fab fa-facebook-f"></i></button>
+          <button type="button"><i class="fab fa-google"></i></button>
+          <button type="button"><i class="fab fa-linkedin-in"></i></button>
+        </div>
+        <p class="small">or use your email for registration:</p>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Name" formControlName="name" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email" formControlName="email" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" formControlName="password" />
+        </div>
+        <button type="submit" class="btn-primary">SIGN UP</button>
+      </form>
+    </div>
+
+    <!-- SIGN IN Panel -->
+    <div class="form-container sign-in-container">
+      <form [formGroup]="signinForm" (ngSubmit)="onSignin()">
+        <h2>Welcome Back!</h2>
+        <p class="small">To keep connected with us please login with your personal info</p>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email" formControlName="email" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" formControlName="password" />
+        </div>
+        <button type="submit" class="btn-primary">SIGN IN</button>
+      </form>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h2>Welcome Back!</h2>
+          <p>To keep connected with us please login with your personal info</p>
+          <button type="button" class="btn-outline" (click)="isSignUp = false">SIGN IN</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h2>Hello, Friend!</h2>
+          <p>Enter your personal details and start your journey with us</p>
+          <button type="button" class="btn-outline" (click)="isSignUp = true">SIGN UP</button>
         </div>
       </div>
     </div>
-  </section>
-  <!-- breadcrumb area end -->
 
-  <!-- login area start -->
-  <section class="tp-login-area pb-140 p-relative z-index-1 fix">
-    <div class="tp-login-shape">
-      <img class="tp-login-shape-1" src="/assets/img/login/login-shape-1.png" alt="">
-      <img class="tp-login-shape-2" src="/assets/img/login/login-shape-2.png" alt="">
-      <img class="tp-login-shape-3" src="/assets/img/login/login-shape-3.png" alt="">
-      <img class="tp-login-shape-4" src="/assets/img/login/login-shape-4.png" alt="">
-    </div>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-xl-6 col-lg-8">
-          <div class="tp-login-wrapper">
-            <div class="tp-login-top text-center mb-30">
-              <h3 class="tp-login-title">Login to Shofy.</h3>
-              <p>Don’t have an account? <span>
-                  <a routerLink="/pages/register">Create a free account</a>
-                </span>
-              </p>
-            </div>
-            <div class="tp-login-option">
-              <!-- social login start -->
-              <app-social-login></app-social-login>
-              <!-- social login end -->
-              <div class="tp-login-mail text-center mb-40">
-                <p>or Sign in with <a href="#">Email</a></p>
-              </div>
-              <!-- login form start -->
-              <app-login-form></app-login-form>
-              <!-- login form end -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- login area end -->
-</main>
-
-<!-- footer start -->
-<app-footer [primary_style]="true"></app-footer>
-<!-- footer end -->
+  </div>
+</div>

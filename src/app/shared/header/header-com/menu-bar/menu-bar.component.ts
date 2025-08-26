@@ -14,19 +14,32 @@ export class MenuBarComponent {
 
   public menu_data: IMenuItem[] = menu_data;
 
-  public activeTabId: number | null = null; // Top-level menu
-  public openSubmenuIds: { [parentId: number]: Set<number> } = {}; // Nested submenus can track multiple opens
+  public activeTabId: number | null = null; // Mobile menu tracking
+  public openSubmenuIds: { [parentId: number]: Set<number> } = {}; // Mobile submenu tracking
 
-  // Toggle top-level menu
+  // === Desktop submenu tracking ===
+  public openMenuIndex: number | null = null;
+  private closeTimeout: any;
+
+  openSubmenu(index: number) {
+    clearTimeout(this.closeTimeout);
+    this.openMenuIndex = index;
+  }
+
+  closeSubmenu() {
+    this.closeTimeout = setTimeout(() => {
+      this.openMenuIndex = null;
+    }, 200); // delay before closing
+  }
+
+  // === Mobile logic ===
   toggleTab(id: number) {
     this.activeTabId = this.activeTabId === id ? null : id;
     if (this.activeTabId === null) {
-      // Close all nested submenus when top-level closes
       this.openSubmenuIds = {};
     }
   }
 
-  // Toggle nested submenu
   toggleSubmenu(parentId: number, subId: number) {
     if (!this.openSubmenuIds[parentId]) {
       this.openSubmenuIds[parentId] = new Set([subId]);
@@ -39,7 +52,6 @@ export class MenuBarComponent {
     }
   }
 
-  // Check if nested submenu is open
   isSubmenuOpen(parentId: number, subId: number): boolean {
     return this.openSubmenuIds[parentId]?.has(subId) || false;
   }

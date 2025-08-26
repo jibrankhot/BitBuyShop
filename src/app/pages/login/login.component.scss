@@ -1,0 +1,255 @@
+/* Global reset so padding doesn't break widths */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Wrapper */
+.auth-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #20a286, #2fc8a6);
+  padding: 20px;
+}
+
+/* Container */
+.auth-container {
+  position: relative;
+  overflow: hidden;
+  width: 950px;
+  max-width: 100%;
+  min-height: 550px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* Forms (left half / right half) */
+.form-container {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform .6s ease-in-out, opacity .6s ease-in-out, z-index .6s ease-in-out;
+}
+
+.form-container h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #20a286;
+}
+
+.form-container .small {
+  font-size: 14px;
+  color: #777;
+  margin: 14px 0 24px;
+}
+
+/* Sign In (default) */
+.sign-in-container {
+  left: 0;
+  z-index: 2;
+}
+
+/* Sign Up (hidden initially at the left, slides in to right half) */
+.sign-up-container {
+  left: 0;
+  opacity: 0;
+  transform: translateX(-100%);
+  z-index: 1;
+}
+
+/* Active (Sign Up) */
+.auth-container.right-panel-active .sign-in-container {
+  transform: translateX(100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.auth-container.right-panel-active .sign-up-container {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 2;
+}
+
+/* Inputs — general (Sign In form) */
+.input-group {
+  width: 100%;
+  max-width: 460px;
+  margin: 12px auto;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.input-group i {
+  font-size: 16px;
+  color: #20a286;
+}
+
+.input-group input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  background: transparent;
+}
+
+/* --- SIGN UP ONLY overrides --- */
+.sign-up-container .input-group {
+  max-width: 520px;   /* wider */
+  padding: 10px 18px; /* shorter height */
+}
+
+.sign-up-container .input-group input {
+  font-size: 14px;
+}
+
+/* Social login */
+.social-login {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.social-login button {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  transition: .3s;
+}
+
+.social-login button i { color: #20a286; }
+
+.social-login button:hover {
+  background: #20a286;
+  border-color: #20a286;
+}
+
+.social-login button:hover i { color: #fff; }
+
+/* Overlay window (shows only half of the overlay at a time) */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform .6s ease-in-out;
+  z-index: 100;
+}
+
+/* The big green sheet that slides */
+.overlay {
+  position: relative;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(135deg, #20a286, #2fc8a6);
+  color: #fff;
+  transform: translateX(0);
+  transition: transform .6s ease-in-out;
+}
+
+/* Panels inside the overlay */
+.overlay-panel {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform .6s ease-in-out;
+}
+
+/* Left panel content starts slightly left (Pinterest feel) */
+.overlay-left {
+  left: 0;
+  transform: translateX(-20%);
+}
+
+/* Right panel content sits centered by default */
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
+}
+
+/* When switching to Sign Up */
+.auth-container.right-panel-active .overlay-container {
+  transform: translateX(-100%);
+}
+
+.auth-container.right-panel-active .overlay {
+  transform: translateX(50%);
+}
+
+.auth-container.right-panel-active .overlay-left {
+  transform: translateX(0);
+}
+
+.auth-container.right-panel-active .overlay-right {
+  transform: translateX(20%);
+}
+
+/* Buttons */
+.btn-primary,
+.btn-outline {
+  margin-top: 20px;
+  padding: 12px 45px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn-primary {
+  background: #20a286;
+  border: none;
+  color: #fff;
+}
+
+.btn-primary:hover { background: #1a8f73; }
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background: #fff;
+  color: #20a286;
+}
+
+/* Responsive polish */
+@media (max-width: 820px) {
+  .auth-container { width: 100%; min-height: 620px; border-radius: 16px; }
+  .form-container { padding: 40px 30px; }
+  .input-group { max-width: 100%; }
+}

@@ -1,21 +1,28 @@
-<!-- Desktop Menu (unchanged) -->
+<!-- Desktop Menu -->
 <ul *ngIf="!isMobile" class="main-menu">
-  <li *ngFor="let item of menu_data; let i = index"
-    [ngClass]="{'has-dropdown': item.drop_down && !item.mega_menu, 'has-mega-menu': item.mega_menu}">
+  <li *ngFor="let item of menu_data; let i = index" (mouseenter)="openSubmenu(i)" (mouseleave)="closeSubmenu()"
+    [ngClass]="{
+        'has-dropdown': item.drop_down && !item.mega_menu,
+        'has-mega-menu': item.mega_menu
+      }">
+
     <a [routerLink]="item.link">{{ item.title }}</a>
 
     <!-- Home mega menu -->
-    <div *ngIf="item.home_pages" class="home-menu tp-submenu tp-mega-menu">
+    <div *ngIf="item.home_pages" class="home-menu tp-submenu tp-mega-menu" [class.active]="openMenuIndex === i"
+      (mouseenter)="openSubmenu(i)" (mouseleave)="closeSubmenu()">
       <!-- your original home mega menu code -->
     </div>
 
     <!-- Shop mega menu -->
-    <div *ngIf="item.shop_mega_menus" class="shop-mega-menu tp-submenu tp-mega-menu">
+    <div *ngIf="item.shop_mega_menus" class="shop-mega-menu tp-submenu tp-mega-menu"
+      [class.active]="openMenuIndex === i" (mouseenter)="openSubmenu(i)" (mouseleave)="closeSubmenu()">
       <!-- your original shop mega menu code -->
     </div>
 
-    <!-- Product menus -->
-    <ul *ngIf="item.product_menus" class="tp-submenu tp-mega-menu mega-menu-style-2">
+    <!-- Product mega menu -->
+    <ul *ngIf="item.product_menus" class="tp-submenu tp-mega-menu mega-menu-style-2"
+      [class.active]="openMenuIndex === i" (mouseenter)="openSubmenu(i)" (mouseleave)="closeSubmenu()">
       <li *ngFor="let prd_m of item.product_menus" class="has-dropdown">
         <a [routerLink]="prd_m.link" class="mega-menu-title">{{ prd_m.title }}</a>
         <ul class="tp-submenu">
@@ -27,7 +34,8 @@
     </ul>
 
     <!-- Simple dropdown menus -->
-    <ul *ngIf="item.drop_down && !item.mega_menu" class="tp-submenu">
+    <ul *ngIf="item.drop_down && !item.mega_menu" class="tp-submenu" [class.active]="openMenuIndex === i"
+      (mouseenter)="openSubmenu(i)" (mouseleave)="closeSubmenu()">
       <li *ngFor="let drop_m of item.dropdown_menus">
         <a [routerLink]="drop_m.link">{{ drop_m.title }}</a>
       </li>
@@ -64,7 +72,7 @@
           </ul>
         </div>
 
-        <!-- Dropdown menus (simple list) -->
+        <!-- Dropdown menus -->
         <div *ngIf="item.dropdown_menus">
           <ul>
             <li *ngFor="let sm of item.dropdown_menus">

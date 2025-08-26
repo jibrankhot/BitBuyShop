@@ -12,6 +12,7 @@ import { MobileSidebarComponent } from "../../components/offcanvas/mobile-sideba
 
 import { Company } from '../../../../assets/data/companydata/company.model';
 import { CompanyService } from '../../../../assets/data/companydata/company.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-fashion-header',
@@ -21,7 +22,7 @@ import { CompanyService } from '../../../../assets/data/companydata/company.serv
 })
 export class FashionHeaderComponent {
   @Input() style_2: boolean = false;
-
+  isProfileOpen = false;
   public searchText: string = '';
   public sticky: boolean = false;
   public isMobile: boolean = false;
@@ -50,7 +51,8 @@ export class FashionHeaderComponent {
       copyright: '',
       paymentImg: '',
       paymentAlt: ''
-    }
+    },
+    companyName: ''
   };
 
   private isBrowser: boolean;
@@ -60,7 +62,9 @@ export class FashionHeaderComponent {
     public wishlistService: WishlistService,
     public utilsService: UtilsService,
     private router: Router,
+    private toastr: ToastrService,
     private companyService: CompanyService,
+
     @Inject(PLATFORM_ID) private platformId: Object
   ) {
     this.isBrowser = isPlatformBrowser(this.platformId);
@@ -76,6 +80,13 @@ export class FashionHeaderComponent {
         this.company = data[0];
       }
     });
+  }
+
+  logout() {
+    // Clear login session
+    sessionStorage.removeItem('isLoggedIn');
+    this.toastr.success('Logged out successfully!');
+    this.router.navigate(['/pages/login']); // Redirect to login page
   }
 
   @HostListener('window:scroll', ['$event'])

@@ -27,7 +27,7 @@ export interface CompanySubscribe {
 
 export interface CompanySocial {
     title: string;
-    links: CompanyLink[]; // e.g. Facebook, Twitter, etc.
+    links: CompanyLink[];
 }
 
 export interface CompanyBottom {
@@ -37,6 +37,7 @@ export interface CompanyBottom {
 }
 
 export interface Company {
+    companyName: string; // Added property
     logo: CompanyLogo;
     contact: CompanyContact;
     sections: CompanySection[];

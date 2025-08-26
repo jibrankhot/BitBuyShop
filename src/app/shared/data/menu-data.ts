@@ -69,19 +69,7 @@ export const menu_data: IMenuItem[] = [
           { title: 'Sleepwear & Lounge', link: '/shop/men/sleepwear-lounge' }
         ]
       },
-      {
-        id: 6,
-        title: 'Accessories',
-        link: '/shop/men/accessories',
-        dropdown_menus: [
-          { title: 'Wallets', link: '/shop/men/wallets' },
-          { title: 'Belts', link: '/shop/men/belts' },
-          { title: 'Caps & Hats', link: '/shop/men/caps-hats' },
-          { title: 'Jewellery', link: '/shop/men/jewellery' },
-          { title: 'Sunglasses', link: '/shop/men/sunglasses' },
-          { title: 'Phone Cases', link: '/shop/men/phone-cases' }
-        ]
-      }
+
     ]
   },
 
@@ -153,18 +141,7 @@ export const menu_data: IMenuItem[] = [
           { title: 'Jackets', link: '/shop/women/sports-jackets' }
         ]
       },
-      {
-        id: 6,
-        title: 'Accessories',
-        link: '/shop/women/accessories',
-        dropdown_menus: [
-          { title: 'Bags & Wallets', link: '/shop/women/bags-wallets' },
-          { title: 'Belts', link: '/shop/women/belts' },
-          { title: 'Jewellery', link: '/shop/women/jewellery' },
-          { title: 'Sunglasses', link: '/shop/women/sunglasses' },
-          { title: 'Hair Accessories', link: '/shop/women/hair-accessories' }
-        ]
-      }
+
     ]
   },
 
