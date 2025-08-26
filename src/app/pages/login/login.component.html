@@ -1,76 +1,64 @@
-<app-fashion-header [style_2]="true"></app-fashion-header>
+<div class="auth-wrapper">
+  <div class="auth-container" [ngClass]="{ 'right-panel-active': isSignUp }">
 
-<main>
-  <section class="tp-login-area pb-140 p-relative z-index-1 fix">
-    <div class="tp-login-shape">
-      <img class="tp-login-shape-1" src="/assets/img/login/login-shape-1.png" alt="">
-      <img class="tp-login-shape-2" src="/assets/img/login/login-shape-2.png" alt="">
-      <img class="tp-login-shape-3" src="/assets/img/login/login-shape-3.png" alt="">
-      <img class="tp-login-shape-4" src="/assets/img/login/login-shape-4.png" alt="">
+    <!-- SIGN UP Panel -->
+    <div class="form-container sign-up-container">
+      <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+        <h2>Create Account</h2>
+        <div class="social-login">
+          <button type="button"><i class="fab fa-facebook-f"></i></button>
+          <button type="button"><i class="fab fa-google"></i></button>
+          <button type="button"><i class="fab fa-linkedin-in"></i></button>
+        </div>
+        <p class="small">or use your email for registration:</p>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" placeholder="Name" formControlName="name" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email" formControlName="email" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" formControlName="password" />
+        </div>
+        <button type="submit" class="btn-primary">SIGN UP</button>
+      </form>
     </div>
 
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-xl-6 col-lg-8">
-          <div class="tp-login-wrapper">
-            <div class="tp-login-top text-center mb-30">
-              <h3 class="tp-login-title">Login To {{ company?.companyName }}</h3>
-              <p>
-                Don’t have an account?
-                <span><a routerLink="/pages/register">Create a free account</a></span>
-              </p>
-            </div>
+    <!-- SIGN IN Panel -->
+    <div class="form-container sign-in-container">
+      <form [formGroup]="signinForm" (ngSubmit)="onSignin()">
+        <h2>Welcome Back!</h2>
+        <p class="small">To keep connected with us please login with your personal info</p>
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Email" formControlName="email" />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" placeholder="Password" formControlName="password" />
+        </div>
+        <button type="submit" class="btn-primary">SIGN IN</button>
+      </form>
+    </div>
 
-            <div class="tp-login-form">
-              <form (ngSubmit)="login()" #loginForm="ngForm">
-
-                <!-- Email input -->
-                <div class="tp-login-input mb-20">
-                  <span class="input-icon">📧</span>
-                  <input type="email" placeholder="Enter your email" [(ngModel)]="email" name="email" required>
-                </div>
-
-                <!-- Password input with eye toggle -->
-                <div class="tp-login-input mb-10 password-wrapper">
-                  <span class="input-icon">🔒</span>
-                  <input class="password-input" [type]="showPassword ? 'text' : 'password'"
-                    placeholder="Enter your password" [(ngModel)]="password" name="password" required>
-                  <span class="toggle-password" (click)="togglePassword()">
-                    <i class="fa" [ngClass]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
-                  </span>
-                </div>
-
-                <!-- Forgot password link -->
-                <div class="forgot-password text-right mb-20">
-                  <a (click)="forgotPassword()">Forgot Password?</a>
-                </div>
-
-                <div class="tp-login-btn-wrapper text-center">
-                  <button type="submit" class="tp-login-btn w-100" [disabled]="!loginForm.form.valid">
-                    Login
-                  </button>
-                </div>
-
-              </form>
-            </div>
-
-            <div class="text-center mt-20">
-              <p>
-                By logging in, you agree to our
-                <a routerLink="/pages/terms">Terms & Conditions</a>
-              </p>
-            </div>
-
-          </div>
+    <!-- Overlay -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h2>Welcome Back!</h2>
+          <p>To keep connected with us please login with your personal info</p>
+          <button type="button" class="btn-outline" (click)="isSignUp = false">SIGN IN</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h2>Hello, Friend!</h2>
+          <p>Enter your personal details and start your journey with us</p>
+          <button type="button" class="btn-outline" (click)="isSignUp = true">SIGN UP</button>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- Toast notification -->
-  <div class="toast" [class.show]="toastVisible" [ngClass]="toastType">
-    {{ toastMessage }}
   </div>
-</main>
-
-<app-footer [primary_style]="true"></app-footer>
+</div>
