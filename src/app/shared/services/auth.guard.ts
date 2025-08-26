@@ -1,15 +1,24 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import { CanActivateFn, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-export const authGuard: CanActivateFn = (route, state) => {
-  const _route = inject(Router);
-  let isLoggedIn = "true" // sessionStorage.getItem('isLoggedIn');
-  if (isLoggedIn == "true") {
-    return true;
-  }
-  else {
-    alert('Not a authentic user detected please login!');
-    _route.navigate(['login']);
+export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+  const router = inject(Router);
+
+  const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+
+  const publicRoutes = ['login', 'register', 'forgot'];
+
+  if (isLoggedIn && publicRoutes.includes(route.routeConfig?.path || '')) {
+    router.navigate(['/pages/profile']);
     return false;
   }
+
+  const protectedRoutes = ['profile', 'checkout', 'contact', 'coupons'];
+  if (!isLoggedIn && protectedRoutes.includes(route.routeConfig?.path || '')) {
+    alert('Not a valid user. Please login first!');
+    router.navigate(['/pages/login']);
+    return false;
+  }
+
+  return true;
 };

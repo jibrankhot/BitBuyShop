@@ -9,18 +9,17 @@ import { ForgotPasswordComponent } from "./forgot-password/forgot-password.compo
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { SearchComponent } from "./search/search.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 export const pagesRoutes: Routes = [
     { path: 'contact', canActivate: [authGuard], component: ContactComponent, title: 'Contact Page' },
     { path: 'coupons', canActivate: [authGuard], component: CouponComponent, title: 'Coupon Page' },
-    { path: 'about', canActivate: [authGuard], component: AboutComponent, title: 'About Page' },
-    { path: 'login', canActivate: [authGuard], component: LoginComponent, title: 'Login Page' },
-    { path: 'register', canActivate: [authGuard], component: RegisterComponent, title: 'Register Page' },
-    { path: 'forgot', canActivate: [authGuard], component: ForgotPasswordComponent, title: 'Forgot Page' },
+    { path: 'about', component: AboutComponent, title: 'About Page' },
+    { path: 'login', component: LoginComponent, title: 'Login Page' },
+    { path: 'register', component: RegisterComponent, title: 'Register Page' },
+    { path: 'forgot', component: ForgotPasswordComponent, title: 'Forgot Page' },
     { path: 'checkout', canActivate: [authGuard], component: CheckoutComponent, title: 'Checkout Page' },
     { path: 'profile', canActivate: [authGuard], component: ProfileComponent, title: 'Profile Page' },
-    { path: 'search', canActivate: [authGuard], component: SearchComponent, title: 'Search Page' },
-
-
-    { path: '**', redirectTo: '/notfound', pathMatch: 'full' }
+    { path: 'search', component: SearchComponent, title: 'Search Page' },
+    { path: '**', component: NotFoundComponent }
 ];
