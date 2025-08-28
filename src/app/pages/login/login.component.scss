@@ -11,8 +11,95 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(120deg, #20a286, #2fc8a6);
   padding: 20px;
+  position: relative;
+  overflow: hidden;
+  background: #e0e0e0; /* Grey background */
+
+  /* Yellow Circle */
+  &::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: #ffd700; /* Yellow */
+    top: 50px;
+    left: 50px;
+    z-index: 0;
+    animation: floatCircle 6s ease-in-out infinite alternate;
+  }
+
+  /* Red Triangle */
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 120px solid transparent;
+    border-right: 120px solid transparent;
+    border-bottom: 200px solid #ff4c4c; /* Red */
+    bottom: 80px;
+    right: 60px;
+    z-index: 0;
+    animation: floatTriangle 8s ease-in-out infinite alternate;
+  }
+
+  /* Extra floating shapes */
+  .shape {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.6;
+  }
+
+  .circle-small {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #00bfff;
+    top: 150px;
+    right: 100px;
+    animation: floatShape 7s ease-in-out infinite alternate;
+  }
+
+  .triangle-small {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 100px solid #ff69b4;
+    top: 300px;
+    left: 200px;
+    animation: floatShape 9s ease-in-out infinite alternate;
+  }
+
+  .square-small {
+    width: 80px;
+    height: 80px;
+    background: #32cd32;
+    top: 400px;
+    right: 250px;
+    animation: floatShape 5s ease-in-out infinite alternate;
+  }
+}
+
+/* Floating animations */
+@keyframes floatCircle {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, 20px) scale(1.05); }
+  100% { transform: translate(-10px, 30px) scale(0.95); }
+}
+
+@keyframes floatTriangle {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-15px, -20px) rotate(10deg); }
+  100% { transform: translate(20px, 10px) rotate(-5deg); }
+}
+
+@keyframes floatShape {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(15px, -10px) rotate(15deg); }
+  100% { transform: translate(-10px, 20px) rotate(-10deg); }
 }
 
 /* Container */
@@ -25,6 +112,7 @@
   background: #fff;
   border-radius: 20px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  z-index: 10; /* Bring above shapes */
 }
 
 /* Forms */
@@ -43,6 +131,44 @@
     z-index 0.6s ease-in-out;
 }
 
+/* … keep all your existing styles for forms, buttons, overlay, responsiveness unchanged … */
+
+.form-container.sign-in-container {
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  opacity: 1;
+  visibility: visible;
+  position: absolute;
+  left: 0;
+  width: 50%;
+  z-index: 2;
+
+  &.fade-in {
+    opacity: 1;
+    visibility: visible;
+    z-index: 2;
+  }
+
+  &.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+  }
+}
+
+.error-message {
+  color: red;
+  font-size: 13px;
+  margin: 6px 0 14px;
+}
+
+.success-message {
+  color: green;
+  font-size: 13px;
+  margin: 6px 0 14px;
+}
+
+/* Keep all your existing styles below unchanged (wrapper, overlay, buttons, floating shapes, etc.) */
+
 .form-container h2 {
   font-size: 26px;
   font-weight: 700;
@@ -56,13 +182,12 @@
   margin: 6px 0 14px;
 }
 
-/* Sign In (default) */
+/* Sign In / Sign Up containers */
 .sign-in-container {
   left: 0;
   z-index: 2;
 }
 
-/* Sign Up (hidden initially) */
 .sign-up-container {
   left: 0;
   opacity: 0;

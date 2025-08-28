@@ -1,7 +1,7 @@
 <div class="auth-wrapper">
   <div class="auth-container" [ngClass]="{ 'right-panel-active': isSignUp }">
 
-    <!-- ✅ SIGN UP Panel -->
+    <!-- Sign Up -->
     <div class="form-container sign-up-container">
       <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
         <h2>Create Account</h2>
@@ -10,17 +10,14 @@
           <i class="fas fa-user"></i>
           <input type="text" placeholder="Name" formControlName="name" />
         </div>
-
         <div class="input-group">
           <i class="fas fa-envelope"></i>
           <input type="email" placeholder="Email" formControlName="email" />
         </div>
-
         <div class="input-group">
           <i class="fas fa-phone"></i>
           <input type="tel" placeholder="Mobile Number" formControlName="mobile" />
         </div>
-
         <div class="input-group">
           <i class="fas fa-lock"></i>
           <input type="password" placeholder="Password" formControlName="password" />
@@ -30,57 +27,50 @@
       </form>
     </div>
 
-    <!-- ✅ SIGN IN Panel (Email/Password) -->
-    <div class="form-container sign-in-container" *ngIf="!isMobileSignin">
+    <!-- Sign In (Email) -->
+    <div class="form-container sign-in-container email-signin" [class.fade-out]="isMobileSignin"
+      [class.fade-in]="!isMobileSignin">
       <form [formGroup]="signinForm" (ngSubmit)="onSignin()">
         <h2>Sign in to Techmaark!</h2>
-        <p class="small">To keep connected with us please login with your personal info</p>
 
         <div class="input-group">
           <i class="fas fa-envelope"></i>
           <input type="email" placeholder="Email" formControlName="email" />
         </div>
-
         <div class="input-group">
           <i class="fas fa-lock"></i>
           <input type="password" placeholder="Password" formControlName="password" />
         </div>
 
         <button type="submit" class="btn-primary full-btn">SIGN IN</button>
-
-        <!-- 🔹 Alternative Mobile Login Button -->
         <button type="button" class="btn-outline alt-login full-btn" (click)="toggleMobileSignin($event)">
           <i class="fas fa-phone"></i> Sign in with Mobile
         </button>
       </form>
     </div>
 
-    <!-- ✅ SIGN IN Panel (Mobile OTP) -->
-    <div class="form-container sign-in-container" *ngIf="isMobileSignin">
-      <!-- Mobile Number Form -->
+    <!-- Sign In (Mobile OTP) -->
+    <div class="form-container sign-in-container mobile-signin" [class.fade-in]="isMobileSignin"
+      [class.fade-out]="!isMobileSignin">
+
+      <!-- OTP request form -->
       <form [formGroup]="mobileSigninForm" (ngSubmit)="onSendOtp()" *ngIf="!otpSent">
         <h2>Sign in with Mobile</h2>
-        <p class="small">Enter your mobile number to receive an OTP</p>
 
         <div class="input-group">
           <i class="fas fa-phone"></i>
           <input type="tel" placeholder="Mobile Number" formControlName="mobile" />
         </div>
 
-        <!-- reCAPTCHA required for Firebase -->
-        <div id="recaptcha-container"></div>
-
         <button type="submit" class="btn-primary full-btn">Send OTP</button>
-
         <button type="button" class="btn-outline alt-login full-btn" (click)="toggleMobileSignin($event)">
           <i class="fas fa-envelope"></i> Back to Email Login
         </button>
       </form>
 
-      <!-- OTP Verification Form -->
+      <!-- OTP verify form -->
       <form [formGroup]="otpForm" (ngSubmit)="onVerifyOtp()" *ngIf="otpSent">
         <h2>Enter OTP</h2>
-        <p class="small">We sent an OTP to your mobile</p>
 
         <div class="input-group">
           <i class="fas fa-key"></i>
@@ -88,14 +78,16 @@
         </div>
 
         <button type="submit" class="btn-primary full-btn">Verify OTP</button>
-
         <button type="button" class="btn-outline alt-login full-btn" (click)="toggleMobileSignin($event)">
           <i class="fas fa-envelope"></i> Back to Email Login
         </button>
       </form>
+
+      <!-- ✅ keep reCAPTCHA container always in DOM -->
+      <div id="recaptcha-container"></div>
     </div>
 
-    <!-- ✅ Overlay -->
+    <!-- Overlay Panels -->
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
@@ -110,5 +102,6 @@
         </div>
       </div>
     </div>
+
   </div>
 </div>
