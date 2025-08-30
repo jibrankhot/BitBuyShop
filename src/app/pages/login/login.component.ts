@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
 
             setTimeout(() => {
                 this.isSignUp = false;
-            }, 1500);
+            }, 1000);
         } catch (error: any) {
             console.error('Sign up error:', error);
             this.toastr.error(error.message || 'Sign up failed.');
@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit {
 
             setTimeout(() => {
                 this.router.navigate(['/home/fashion']);
-            }, 1500);
+            }, 1000);
         } catch (error: any) {
             console.error('Sign in error:', error);
             this.toastr.error(error.message || 'Sign in failed.');

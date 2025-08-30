@@ -2,17 +2,18 @@ import { IProduct } from "../types/product-type";
 
 const product_data: IProduct[] = [
   {
-    id: "6421258288fba3e101965dc3",
-    sku: "FAB7SDVX44",
-    img: "https://i.ibb.co/gg9yCwX/clothing-1.png",
-    title: "Whitetails Women's Dress",
-    slug: "whitetails-women's-dress",
+    id: "1",
+    sku: "item1",
+    img: "assets/img/mens/Deep Sea Linen Shirt1.webp",
+    title: "Deep Sea Linen Shirt",
+    slug: "deep-sea-linen-shirt",
     unit: "10pcs",
     imageURLs: [
-      { color: { name: "Normal View", clrCode: "#642832" }, img: "assets/img/mens/Deep Sea Linen Shirt1.webp" },
-      { color: { name: "Zoomed View", clrCode: "#642832" }, img: "assets/img/mens/Deep Sea Linen Shirt2.webp" },
-      { color: { name: "Closedup View", clrCode: "#307FA8" }, img: "assets/img/mens/Deep Sea Linen Shirt3.webp" },
-      { color: { name: "Back View", clrCode: "#307FA8" }, img: "assets/img/mens/Deep Sea Linen Shirt4.webp" },
+
+      { color: { name: "Normal View", clrCode: "#642832" }, img: "assets/img/mens/Deep Sea Linen Shirt2.webp" },
+      { color: { name: "Zoomed View", clrCode: "#642832" }, img: "assets/img/mens/Deep Sea Linen Shirt1.webp" },
+      { color: { name: "Closedup View", clrCode: "#015482" }, img: "assets/img/mens/Deep Sea Linen Shirt3.webp" },
+      { color: { name: "Back View", clrCode: "#015482" }, img: "assets/img/mens/Deep Sea Linen Shirt4.webp" },
     ],
     parent: "Clothing",
     children: "Women's",
