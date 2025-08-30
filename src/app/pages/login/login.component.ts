@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import {
     ConfirmationResult,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
+    sendPasswordResetEmail,
     UserCredential
 } from '@angular/fire/auth';
 
@@ -30,6 +31,8 @@ export class LoginComponent implements OnInit {
     isSignUp = false;
     isMobileSignin = false;
     otpSent = false;
+    showForgotPassword = false;
+
     recaptchaVerifier?: RecaptchaVerifier;
     confirmationResult?: ConfirmationResult;
 
@@ -37,26 +40,31 @@ export class LoginComponent implements OnInit {
     signinForm: FormGroup;
     mobileSigninForm: FormGroup;
     otpForm: FormGroup;
+    forgotPasswordForm: FormGroup;
 
     constructor(private fb: FormBuilder, private router: Router) {
         this.signupForm = this.fb.group({
-            name: [''],
-            email: [''],
-            mobile: [''],
-            password: ['']
+            name: ['', Validators.required],
+            email: ['', [Validators.required, Validators.email]],
+            mobile: ['', Validators.required],
+            password: ['', Validators.required]
         });
 
         this.signinForm = this.fb.group({
-            email: [''],
-            password: ['']
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', Validators.required]
         });
 
         this.mobileSigninForm = this.fb.group({
-            mobile: ['']
+            mobile: ['', Validators.required]
         });
 
         this.otpForm = this.fb.group({
-            otp: ['']
+            otp: ['', Validators.required]
+        });
+
+        this.forgotPasswordForm = this.fb.group({
+            email: ['', [Validators.required, Validators.email]]
         });
     }
 
@@ -74,6 +82,8 @@ export class LoginComponent implements OnInit {
         event.preventDefault();
         this.isMobileSignin = !this.isMobileSignin;
         this.otpSent = false;
+        this.mobileSigninForm.reset();
+        this.otpForm.reset();
     }
 
     async onSignup() {
@@ -88,7 +98,7 @@ export class LoginComponent implements OnInit {
 
             setTimeout(() => {
                 this.isSignUp = false;
-            }, 2000);
+            }, 1500);
         } catch (error: any) {
             console.error('Sign up error:', error);
             this.toastr.error(error.message || 'Sign up failed.');
@@ -157,5 +167,30 @@ export class LoginComponent implements OnInit {
                 console.error('Invalid OTP', error);
                 this.toastr.error('Invalid OTP. Please try again.');
             });
+    }
+
+    async onForgotPassword() {
+        const { email } = this.forgotPasswordForm.value;
+
+        if (!email) {
+            this.toastr.error('Please enter your email.');
+            return;
+        }
+
+        try {
+            await sendPasswordResetEmail(this.auth, email);
+            this.toastr.success('Password reset link sent to your email.');
+            this.forgotPasswordForm.reset();
+            this.showForgotPassword = false;
+        } catch (error: any) {
+            console.error('Password reset error:', error);
+            this.toastr.error(error.message || 'Failed to send reset link.');
+        }
+    }
+
+    onShowForgotPassword(event: Event) {
+        event.preventDefault();
+        this.showForgotPassword = true;
+        this.signinForm.reset();
     }
 }

@@ -371,3 +371,17 @@
     max-width: 100%;
   }
 }
+.forgot-link {
+  @extend .btn-outline;    
+  width: 90%;
+  max-width: 280px;
+  margin-top: 10px;
+  text-decoration: none;     
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+ background: #20a286;
+  color: #fff;  }
+}

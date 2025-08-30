@@ -1,7 +1,6 @@
 <div class="auth-wrapper">
   <div class="auth-container" [ngClass]="{ 'right-panel-active': isSignUp }">
 
-    <!-- Sign Up -->
     <div class="form-container sign-up-container">
       <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
         <h2>Create Account</h2>
@@ -27,10 +26,10 @@
       </form>
     </div>
 
-    <!-- Sign In (Email) -->
     <div class="form-container sign-in-container email-signin" [class.fade-out]="isMobileSignin"
       [class.fade-in]="!isMobileSignin">
-      <form [formGroup]="signinForm" (ngSubmit)="onSignin()">
+
+      <form *ngIf="!showForgotPassword" [formGroup]="signinForm" (ngSubmit)="onSignin()">
         <h2>Sign in to Techmaark!</h2>
 
         <div class="input-group">
@@ -43,17 +42,34 @@
         </div>
 
         <button type="submit" class="btn-primary full-btn">SIGN IN</button>
+
+        <button type="button" class="forgot-link" (click)="onShowForgotPassword($event)">
+          Forgot Password?
+        </button>
+
         <button type="button" class="btn-outline alt-login full-btn" (click)="toggleMobileSignin($event)">
           <i class="fas fa-phone"></i> Sign in with Mobile
         </button>
       </form>
+
+      <form *ngIf="showForgotPassword" [formGroup]="forgotPasswordForm" (ngSubmit)="onForgotPassword()">
+        <h2>Reset Password</h2>
+
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" placeholder="Enter your email" formControlName="email" />
+        </div>
+
+        <button type="submit" class="btn-primary full-btn">Send Reset Link</button>
+        <button type="button" class="btn-outline full-btn" (click)="showForgotPassword = false; signinForm.reset()">
+          Back to Login
+        </button>
+      </form>
     </div>
 
-    <!-- Sign In (Mobile OTP) -->
     <div class="form-container sign-in-container mobile-signin" [class.fade-in]="isMobileSignin"
       [class.fade-out]="!isMobileSignin">
 
-      <!-- OTP request form -->
       <form [formGroup]="mobileSigninForm" (ngSubmit)="onSendOtp()" *ngIf="!otpSent">
         <h2>Sign in with Mobile</h2>
 
@@ -68,7 +84,6 @@
         </button>
       </form>
 
-      <!-- OTP verify form -->
       <form [formGroup]="otpForm" (ngSubmit)="onVerifyOtp()" *ngIf="otpSent">
         <h2>Enter OTP</h2>
 
@@ -83,11 +98,9 @@
         </button>
       </form>
 
-      <!-- ✅ keep reCAPTCHA container always in DOM -->
       <div id="recaptcha-container"></div>
     </div>
 
-    <!-- Overlay Panels -->
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
