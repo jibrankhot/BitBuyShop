@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import Swiper from 'swiper';
 import { Navigation, Scrollbar } from 'swiper/modules';
 import { SharedModule } from '../../app/shared.module';
@@ -17,6 +17,10 @@ import { FeatureCurationsService } from './featurecurationsService';
 export class FeatureCurationsComponent implements AfterViewInit {
   featureCurations$: Observable<FeatureCurationsCard[]>;
 
+  @ViewChild('featureCurationsSlider', { static: false }) sliderRef!: ElementRef;
+  @ViewChild('prevBtn', { static: false }) prevBtnRef!: ElementRef;
+  @ViewChild('nextBtn', { static: false }) nextBtnRef!: ElementRef;
+
   constructor(
     private featureCurationsService: FeatureCurationsService,
     private domUtil: DomUtilsService
@@ -26,7 +30,7 @@ export class FeatureCurationsComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.domUtil.runInBrowser(() => {
-      new Swiper('.featurecurations-slider', {
+      new Swiper(this.sliderRef.nativeElement, {
         slidesPerView: 4,
         spaceBetween: 20,
         loop: false,
@@ -35,11 +39,11 @@ export class FeatureCurationsComponent implements AfterViewInit {
         watchSlidesProgress: true,
         modules: [Navigation, Scrollbar],
         navigation: {
-          nextEl: '.next-btn',
-          prevEl: '.prev-btn',
+          nextEl: this.nextBtnRef.nativeElement,
+          prevEl: this.prevBtnRef.nativeElement,
         },
         scrollbar: {
-          el: '.swiper-scrollbar',
+          el: this.sliderRef.nativeElement.querySelector('.swiper-scrollbar'),
           draggable: true,
         },
         breakpoints: {

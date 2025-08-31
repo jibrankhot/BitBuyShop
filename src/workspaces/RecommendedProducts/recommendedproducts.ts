@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import Swiper from 'swiper';
 import { Navigation, Scrollbar } from 'swiper/modules';
 import { SharedModule } from '../../app/shared.module';
@@ -16,6 +16,12 @@ import { RecommendedProductsService } from './RecommendedProductsService';
 export class RecommendedProductsComponent implements AfterViewInit {
   public recommendedProducts: IProduct[] = [];
 
+  @ViewChild('recommendedSlider', { static: false }) recommendedSliderRef!: ElementRef;
+  @ViewChild('recommendedPrev', { static: false }) recommendedPrevRef!: ElementRef;
+  @ViewChild('recommendedNext', { static: false }) recommendedNextRef!: ElementRef;
+
+  @ViewChildren('productCarousel') productCarousels!: QueryList<ElementRef>;
+
   constructor(
     public cartService: CartService,
     public recommendedService: RecommendedProductsService,
@@ -30,17 +36,18 @@ export class RecommendedProductsComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.domUtil.runInBrowser(() => {
-      new Swiper('.recommended-slider', {
+      // Overall recommended slider
+      new Swiper(this.recommendedSliderRef.nativeElement, {
         slidesPerView: 4,
         spaceBetween: 20,
         loop: false,
         modules: [Navigation, Scrollbar],
         navigation: {
-          nextEl: '.next-button',
-          prevEl: '.previous-button',
+          nextEl: this.recommendedNextRef.nativeElement,
+          prevEl: this.recommendedPrevRef.nativeElement,
         },
         scrollbar: {
-          el: '.swiper-scrollbar',
+          el: this.recommendedSliderRef.nativeElement.querySelector('.swiper-scrollbar'),
           draggable: true,
         },
         breakpoints: {
@@ -51,20 +58,23 @@ export class RecommendedProductsComponent implements AfterViewInit {
         },
       });
 
-      setTimeout(() => {
-        document.querySelectorAll('.product-carousel').forEach((carouselEl: any, index: number) => {
-          new Swiper(`.product-carousel-${index}`, {
-            slidesPerView: 1,
-            loop: true,
-            nested: true,
-            modules: [Navigation],
-            navigation: {
-              nextEl: `.product-next-${index}`,
-              prevEl: `.product-previous-${index}`,
-            },
-          });
+      // Nested product carousels
+      this.productCarousels.forEach((carouselRef: ElementRef, index: number) => {
+        const el = carouselRef.nativeElement as HTMLElement;
+        const nextBtn = el.querySelector('.product-next') as HTMLElement;
+        const prevBtn = el.querySelector('.product-prev') as HTMLElement;
+
+        new Swiper(el, {
+          slidesPerView: 1,
+          loop: true,
+          nested: true,
+          modules: [Navigation],
+          navigation: {
+            nextEl: nextBtn,
+            prevEl: prevBtn,
+          },
         });
-      }, 0);
+      });
     });
   }
 

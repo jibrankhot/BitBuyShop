@@ -11,20 +11,20 @@
 
       <div class="row">
          <div class="col-xl-12 position-relative">
-            <!-- Outer Carousel Navigation Buttons -->
-            <div class="outer-swiper-btn prev-btn">
-               <i class="fas fa-chevron-left"></i>
-            </div>
-            <div class="outer-swiper-btn next-btn">
-               <i class="fas fa-chevron-right"></i>
-            </div>
 
-            <div class="recommended-slider swiper-container">
+            <!-- Outer Carousel Navigation Buttons -->
+            <div #recommendedPrev class="outer-swiper-btn prev-btn"><i class="fas fa-chevron-left"></i></div>
+            <div #recommendedNext class="outer-swiper-btn next-btn"><i class="fas fa-chevron-right"></i></div>
+
+            <!-- Overall slider -->
+            <div #recommendedSlider class="recommended-slider swiper-container">
                <div class="swiper-wrapper">
+
                   <div *ngFor="let item of recommendedProducts; let i = index" class="recommended-card swiper-slide">
                      <div class="recommended-thumb">
-                        <!-- Nested Product Image Carousel -->
-                        <div class="product-carousel swiper-container product-carousel-{{i}}">
+
+                        <!-- Nested Product Carousel -->
+                        <div #productCarousel class="product-carousel swiper-container">
                            <div class="swiper-wrapper">
                               <div *ngFor="let imgObj of item.imageURLs" class="swiper-slide">
                                  <a [routerLink]="['/shop/shop-details', item.id]">
@@ -33,23 +33,20 @@
                               </div>
                            </div>
 
-                           <!-- Unique Navigation per Product Carousel -->
-                           <div class="swiper-button-next product-next-{{i}}"></div>
-                           <div class="swiper-button-prev product-prev-{{i}}"></div>
+                           <!-- Unique navigation per product carousel -->
+                           <div class="swiper-button-next product-next"></div>
+                           <div class="swiper-button-prev product-prev"></div>
                         </div>
 
-                        <!-- Wishlist Button -->
-                        <button class="wishlist-btn">
-                           <i class="far fa-heart"></i>
-                        </button>
-
-                        <!-- Add to Cart Button -->
+                        <!-- Wishlist & Add to Cart -->
+                        <button class="wishlist-btn"><i class="far fa-heart"></i></button>
                         <button *ngIf="!isItemInCart(item)" (click)="addToCart(item)" class="add-bag-btn">
                            <i class="fas fa-shopping-bag"></i> ADD TO BAG
                         </button>
                         <a *ngIf="isItemInCart(item)" routerLink="/shop/cart" class="add-bag-btn active">
                            <i class="fas fa-shopping-bag"></i> VIEW CART
                         </a>
+
                      </div>
 
                      <div class="recommended-content">
@@ -58,10 +55,13 @@
                         </h3>
                         <p class="recommended-price">₹ {{ item.price }}</p>
                      </div>
+
                   </div>
+
                </div>
                <div class="swiper-scrollbar"></div>
             </div>
+
          </div>
       </div>
    </div>
