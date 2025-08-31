@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { SharedModule } from '../shared.module';
 import { FashionHeaderComponent } from "../shared/header/fashionHeaderComponent/fashionheadercomponent";
 import { HeroBannerComponent } from "../shared/components/hero-banner/hero-banner.component";
-import { PopularProductsComponent } from "../shop/product/fashion/popular-products/popular-products.component";
 import { AllProductsComponent } from "../shop/product/fashion/all-products/all-products.component";
 import { FeaturedProductsComponent } from "../shop/product/fashion/featured-products/featured-products.component";
 import { TrendingItemsComponent } from "../shop/product/fashion/trending-items/trending-items.component";
@@ -12,16 +11,17 @@ import { FeatureComponent } from "../shared/components/feature/feature.component
 import { InstagramAreaComponent } from "../shared/components/instagram/instagram-area.component";
 import { FooterComponent } from '../shared/footer/footer.component';
 import { CategoryComponent } from '../shared/components/category/category.component';
+import { RecommendedProductsComponent } from '../shop/product/fashion/recommended-products/recommended-products.component';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
   imports: [SharedModule, FashionHeaderComponent, HeroBannerComponent,
-    CategoryComponent, PopularProductsComponent,
-    AllProductsComponent, FeaturedProductsComponent,
-    TrendingItemsComponent, BestSellingItemsComponent,
-    TestimonialComponent, FeatureComponent, InstagramAreaComponent,
+    CategoryComponent, RecommendedProductsComponent,
+    // AllProductsComponent, FeaturedProductsComponent,
+    // TrendingItemsComponent, BestSellingItemsComponent,
+    // TestimonialComponent, FeatureComponent, InstagramAreaComponent,
     FooterComponent]
 })
 export class HomeComponent {
