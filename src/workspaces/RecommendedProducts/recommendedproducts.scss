@@ -140,14 +140,15 @@
 /* Outer Carousel Navigation Buttons */
 .swiper-button-next,
 .swiper-button-prev {
-  background: #fff;
+  background: transparent;      /* completely transparent */
+  box-shadow: none;  
   border-radius: 50%;
   width: 36px;
   height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+
 }
 
 .swiper-button-next:hover,
@@ -194,29 +195,31 @@
   position: relative;
 }
 
+
 /* Inner arrows (hidden by default) */
 .product-carousel .swiper-button-next,
 .product-carousel .swiper-button-prev {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  background: transparent;      /* completely transparent */
+  box-shadow: none;             /* no shadow */
   display: flex;
   align-items: center;
   justify-content: center;
   top: 50%;
   transform: translateY(-50%);
   z-index: 5;
-  opacity: 0;                  /* hidden by default */
+  opacity: 0;                   /* hidden by default */
   visibility: hidden;
   transition: all 0.3s ease;
 }
 
+/* Arrow icon color to dull white */
 .product-carousel .swiper-button-next::after,
 .product-carousel .swiper-button-prev::after {
-  font-size: 14px;
-  color: #111;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);  /* dull white */
   font-weight: 600;
 }
 
@@ -227,12 +230,12 @@
   visibility: visible;
 }
 
-/* Hover style */
+/* Hover effect (slightly scale on hover) */
 .product-carousel .swiper-button-next:hover,
 .product-carousel .swiper-button-prev:hover {
-  background: #f5f5f5;
   transform: translateY(-50%) scale(1.1);
 }
+
 
 /* Positioning */
 .product-carousel .swiper-button-next {
