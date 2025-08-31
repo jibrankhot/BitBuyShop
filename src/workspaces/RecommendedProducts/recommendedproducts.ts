@@ -1,29 +1,29 @@
 import { Component, AfterViewInit } from '@angular/core';
 import Swiper from 'swiper';
 import { Navigation, Scrollbar } from 'swiper/modules';
-import { SharedModule } from '../../../../shared.module';
-import { IProduct } from '../../../../shared/types/product-type';
-import { CartService } from '../../../../shared/services/cart.service';
-import { ProductService } from '../../../../shared/services/product.service';
-import { DomUtilsService } from '../../../../shared/services/dom-utils.service';
+import { SharedModule } from '../../app/shared.module';
+import { IProduct } from '../../app/shared/types/product-type';
+import { CartService } from '../../app/shared/services/cart.service';
+import { DomUtilsService } from '../../app/shared/services/dom-utils.service';
+import { RecommendedProductsService } from './RecommendedProductsService';
 
 @Component({
   selector: 'app-recommended-products',
-  templateUrl: './recommended-products.component.html',
-  styleUrls: ['./recommended-products.component.scss'],
+  templateUrl: './recommendedproducts.html',
+  styleUrls: ['./recommendedproducts.scss'],
   imports: [SharedModule]
 })
 export class RecommendedProductsComponent implements AfterViewInit {
-  public recommendedPrd: IProduct[] = [];
+  public recommendedProducts: IProduct[] = [];
 
   constructor(
     public cartService: CartService,
-    public productService: ProductService,
+    public recommendedService: RecommendedProductsService,
     private domUtil: DomUtilsService
   ) {
-    this.productService.products.subscribe((products) => {
-      this.recommendedPrd = products
-        .filter((p) => p.productType === 'fashion')
+    this.recommendedService.products.subscribe((products) => {
+      this.recommendedProducts = products
+        .filter((p) => p.productType === 'recommendedProducts')
         .slice(0, 8);
     });
   }
@@ -36,8 +36,8 @@ export class RecommendedProductsComponent implements AfterViewInit {
         loop: false,
         modules: [Navigation, Scrollbar],
         navigation: {
-          nextEl: '.next-btn',
-          prevEl: '.prev-btn',
+          nextEl: '.next-button',
+          prevEl: '.previous-button',
         },
         scrollbar: {
           el: '.swiper-scrollbar',
@@ -60,7 +60,7 @@ export class RecommendedProductsComponent implements AfterViewInit {
             modules: [Navigation],
             navigation: {
               nextEl: `.product-next-${index}`,
-              prevEl: `.product-prev-${index}`,
+              prevEl: `.product-previous-${index}`,
             },
           });
         });
@@ -74,7 +74,7 @@ export class RecommendedProductsComponent implements AfterViewInit {
 
   isItemInCart(item: IProduct): boolean {
     return this.cartService.getCartProducts().some(
-      (prd: IProduct) => prd.id === item.id
+      (product: IProduct) => product.id === item.id
     );
   }
 }
