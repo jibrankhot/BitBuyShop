@@ -1,16 +1,23 @@
-import { RecommendedProducts } from "./recommendedproductsmodel";
+import { NewArrivalProducts } from "./newarrivalproductsmodel";
 
-export const recommendedProducts: RecommendedProducts[] = [
+export const newArrivalProducts: NewArrivalProducts[] = [
   {
     id: "1",
     sku: "BEIGE-STRIPE-LINEN-SHIRT",
-    img: "assets/image/recommended/Beige Stripe Linen Shirt1.webp",
+    img: "assets/image/new-arrivals/Beige Stripe Linen Shirt1.webp",
     title: "Beige Stripe Linen Shirt",
     slug: "beige-stripe-linen-shirt",
     unit: "10pcs",
+    badge: null,
     imageURLs: [
-      { color: { name: "Front View", clrCode: "#D8CAB8" }, img: "assets/image/recommended/Beige Stripe Linen Shirt1.webp" },
-      { color: { name: "Back View", clrCode: "#D8CAB8" }, img: "assets/image/recommended/Beige Stripe Linen Shirt2.webp" }
+      {
+        color: { name: "Front View", clrCode: "#D8CAB8" },
+        img: "assets/image/new-arrivals/Beige Stripe Linen Shirt1.webp"
+      },
+      {
+        color: { name: "Back View", clrCode: "#D8CAB8" },
+        img: "assets/image/new-arrivals/Beige Stripe Linen Shirt2.webp"
+      }
     ],
     parent: "Clothing",
     children: "Women's",
@@ -20,8 +27,9 @@ export const recommendedProducts: RecommendedProducts[] = [
     brand: { name: "Legendary Whitetails" },
     category: { name: "Clothing" },
     status: "in-stock",
-    productType: "recommendedProducts",
-    description: "Stay cool and stylish with our Beige Stripe Linen Shirt – crafted from breathable, lightweight linen...",
+    productType: "newArrivalProducts",
+    description:
+      "Stay cool and stylish with our Beige Stripe Linen Shirt – crafted from breathable, lightweight linen...",
     additionalInformation: [
       { key: "Material", value: "100% Linen" },
       { key: "Fit", value: "Relaxed fit for comfort and breathability" },
@@ -36,13 +44,20 @@ export const recommendedProducts: RecommendedProducts[] = [
   {
     id: "2",
     sku: "MINT-MIST-LINEN-SHIRT",
-    img: "assets/image/recommended/Mint Mist Linen Shirt1.webp",
+    img: "assets/image/new-arrivals/Mint Mist Linen Shirt1.webp",
     title: "Mint Mist Linen Shirt",
     slug: "mint-mist-linen-shirt",
     unit: "10pcs",
+    badge: "new",
     imageURLs: [
-      { color: { name: "Front View", clrCode: "#D4E8D3" }, img: "assets/image/recommended/Mint Mist Linen Shirt1.webp" },
-      { color: { name: "Back View", clrCode: "#D4E8D3" }, img: "assets/image/recommended/Mint Mist Linen Shirt2.webp" }
+      {
+        color: { name: "Front View", clrCode: "#D4E8D3" },
+        img: "assets/image/new-arrivals/Mint Mist Linen Shirt1.webp"
+      },
+      {
+        color: { name: "Back View", clrCode: "#D4E8D3" },
+        img: "assets/image/new-arrivals/Mint Mist Linen Shirt2.webp"
+      }
     ],
     parent: "Clothing",
     children: "Women's",
@@ -52,8 +67,9 @@ export const recommendedProducts: RecommendedProducts[] = [
     brand: { name: "Legendary Whitetails" },
     category: { name: "Clothing" },
     status: "in-stock",
-    productType: "recommendedProducts",
-    description: "Experience airy comfort with the Mint Mist Linen Shirt – crafted from soft, breathable linen...",
+    productType: "newArrivalProducts",
+    description:
+      "Experience airy comfort with the Mint Mist Linen Shirt – crafted from soft, breathable linen...",
     additionalInformation: [
       { key: "Material", value: "100% Linen" },
       { key: "Fit", value: "Relaxed fit for breathable wear" },
@@ -68,13 +84,20 @@ export const recommendedProducts: RecommendedProducts[] = [
   {
     id: "3",
     sku: "MANTIS-GREEN-LINEN-SHIRT",
-    img: "assets/image/recommended/Mantis Green Linen Shirt1.webp",
+    img: "assets/image/new-arrivals/Mantis Green Linen Shirt1.webp",
     title: "Mantis Green Linen Shirt",
     slug: "mantis-green-linen-shirt",
     unit: "10pcs",
+    badge: "sale",
     imageURLs: [
-      { color: { name: "Front View", clrCode: "#7DA87B" }, img: "assets/image/recommended/Mantis Green Linen Shirt1.webp" },
-      { color: { name: "Back View", clrCode: "#7DA87B" }, img: "assets/image/recommended/Mantis Green Linen Shirt2.webp" }
+      {
+        color: { name: "Front View", clrCode: "#7DA87B" },
+        img: "assets/image/new-arrivals/Mantis Green Linen Shirt1.webp"
+      },
+      {
+        color: { name: "Back View", clrCode: "#7DA87B" },
+        img: "assets/image/new-arrivals/Mantis Green Linen Shirt2.webp"
+      }
     ],
     parent: "Clothing",
     children: "Women's",
@@ -84,8 +107,9 @@ export const recommendedProducts: RecommendedProducts[] = [
     brand: { name: "Legendary Whitetails" },
     category: { name: "Clothing" },
     status: "in-stock",
-    productType: "recommendedProducts",
-    description: "The Mantis Green Linen Shirt brings a subtle earthy tone to your wardrobe...",
+    productType: "newArrivalProducts",
+    description:
+      "The Mantis Green Linen Shirt brings a subtle earthy tone to your wardrobe...",
     additionalInformation: [
       { key: "Material", value: "100% Linen" },
       { key: "Fit", value: "Easy relaxed fit" },
@@ -100,13 +124,20 @@ export const recommendedProducts: RecommendedProducts[] = [
   {
     id: "4",
     sku: "CHINOISE-STRIPE-LINEN-SHIRT",
-    img: "assets/image/recommended/Chinoise Stripe Linen Shirt1.webp",
+    img: "assets/image/new-arrivals/Chinoise Stripe Linen Shirt1.webp",
     title: "Chinoise Stripe Linen Shirt",
     slug: "chinoise-stripe-linen-shirt",
     unit: "10pcs",
+    badge: "new",
     imageURLs: [
-      { color: { name: "Front View", clrCode: "#EBDAD1" }, img: "assets/image/recommended/Chinoise Stripe Linen Shirt1.webp" },
-      { color: { name: "Back View", clrCode: "#EBDAD1" }, img: "assets/image/recommended/Chinoise Stripe Linen Shirt2.webp" }
+      {
+        color: { name: "Front View", clrCode: "#EBDAD1" },
+        img: "assets/image/new-arrivals/Chinoise Stripe Linen Shirt1.webp"
+      },
+      {
+        color: { name: "Back View", clrCode: "#EBDAD1" },
+        img: "assets/image/new-arrivals/Chinoise Stripe Linen Shirt2.webp"
+      }
     ],
     parent: "Clothing",
     children: "Women's",
@@ -116,8 +147,9 @@ export const recommendedProducts: RecommendedProducts[] = [
     brand: { name: "Legendary Whitetails" },
     category: { name: "Clothing" },
     status: "in-stock",
-    productType: "recommendedProducts",
-    description: "Effortlessly elegant, the Chinoise Stripe Linen Shirt features a soft neutral palette...",
+    productType: "newArrivalProducts",
+    description:
+      "Effortlessly elegant, the Chinoise Stripe Linen Shirt features a soft neutral palette...",
     additionalInformation: [
       { key: "Material", value: "100% Linen" },
       { key: "Fit", value: "Straight cut, relaxed fit" },
@@ -132,13 +164,20 @@ export const recommendedProducts: RecommendedProducts[] = [
   {
     id: "5",
     sku: "CELADON-GREEN-LINEN-SHIRT",
-    img: "assets/image/recommended/Celadon Green Linen Shirt1.webp",
+    img: "assets/image/new-arrivals/Celadon Green Linen Shirt1.webp",
     title: "Celadon Green Linen Shirt",
     slug: "celadon-green-linen-shirt",
     unit: "10pcs",
+    badge: null,
     imageURLs: [
-      { color: { name: "Front View", clrCode: "#B8D9C5" }, img: "assets/image/recommended/Celadon Green Linen Shirt1.webp" },
-      { color: { name: "Back View", clrCode: "#B8D9C5" }, img: "assets/image/recommended/Celadon Green Linen Shirt2.webp" }
+      {
+        color: { name: "Front View", clrCode: "#B8D9C5" },
+        img: "assets/image/new-arrivals/Celadon Green Linen Shirt1.webp"
+      },
+      {
+        color: { name: "Back View", clrCode: "#B8D9C5" },
+        img: "assets/image/new-arrivals/Celadon Green Linen Shirt2.webp"
+      }
     ],
     parent: "Clothing",
     children: "Women's",
@@ -148,8 +187,9 @@ export const recommendedProducts: RecommendedProducts[] = [
     brand: { name: "Legendary Whitetails" },
     category: { name: "Clothing" },
     status: "in-stock",
-    productType: "recommendedProducts",
-    description: "The Celadon Green Linen Shirt delivers a serene vibe with its cool, pastel tone...",
+    productType: "newArrivalProducts",
+    description:
+      "The Celadon Green Linen Shirt delivers a serene vibe with its cool, pastel tone...",
     additionalInformation: [
       { key: "Material", value: "100% Linen" },
       { key: "Fit", value: "Loose fit with drop shoulder" },
@@ -162,4 +202,3 @@ export const recommendedProducts: RecommendedProducts[] = [
     sizes: ["XS", "S", "M", "L", "XL"]
   }
 ];
-;

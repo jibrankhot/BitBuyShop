@@ -2,56 +2,56 @@ import { Component, AfterViewInit, ElementRef, ViewChild, ViewChildren, QueryLis
 import Swiper from 'swiper';
 import { Navigation, Scrollbar } from 'swiper/modules';
 import { SharedModule } from '../../app/shared.module';
-import { RecommendedProducts } from './recommendedproductsmodel';
-import { RecommendedProductsService } from './RecommendedProductsService';
+import { NewArrivalProducts } from './newarrivalproductsmodel';
+import { NewArrivalProductsService } from './newarrivalproductsService';
 import { DomUtilsService } from '../../app/shared/services/dom-utils.service';
 
 @Component({
-  selector: 'app-recommended-products',
-  templateUrl: './recommendedproducts.html',
-  styleUrls: ['./recommendedproducts.scss'],
+  selector: 'app-new-arrivals',
+  templateUrl: './newarrivalproducts.html',
+  styleUrls: ['./newarrivalproducts.scss'],
   imports: [SharedModule]
 })
-export class RecommendedProductsComponent implements AfterViewInit {
-  public recommendedProducts: RecommendedProducts[] = [];
-  public cartItems: RecommendedProducts[] = [];
+export class NewArrivalProductsComponent implements AfterViewInit {
+  public newArrivalProducts: NewArrivalProducts[] = [];
+  public cartItems: NewArrivalProducts[] = [];
 
-  @ViewChild('recommendedSlider', { static: false }) recommendedSliderRef!: ElementRef;
-  @ViewChild('recommendedPrev', { static: false }) recommendedPrevRef!: ElementRef;
-  @ViewChild('recommendedNext', { static: false }) recommendedNextRef!: ElementRef;
+  @ViewChild('newArrivalSlider', { static: false }) newArrivalSliderRef!: ElementRef;
+  @ViewChild('newArrivalPrev', { static: false }) newArrivalPrevRef!: ElementRef;
+  @ViewChild('newArrivalNext', { static: false }) newArrivalNextRef!: ElementRef;
   @ViewChildren('productCarousel') productCarousels!: QueryList<ElementRef>;
 
   constructor(
-    public recommendedService: RecommendedProductsService,
+    public newArrivalService: NewArrivalProductsService,
     private domUtil: DomUtilsService
   ) {
     // Subscribe to products
-    this.recommendedService.products.subscribe((products) => {
-      this.recommendedProducts = products
-        .filter((p) => p.productType === 'recommendedProducts')
+    this.newArrivalService.products.subscribe((products) => {
+      this.newArrivalProducts = products
+        .filter((p) => p.productType === 'newArrivalProducts') // update productType if needed
         .slice(0, 8);
     });
 
     // Subscribe to cart updates
-    this.recommendedService.cart$.subscribe(cart => {
+    this.newArrivalService.cart$.subscribe(cart => {
       this.cartItems = cart;
     });
   }
 
   ngAfterViewInit(): void {
     this.domUtil.runInBrowser(() => {
-      // Outer recommended slider
-      new Swiper(this.recommendedSliderRef.nativeElement, {
+      // Outer new arrivals slider
+      new Swiper(this.newArrivalSliderRef.nativeElement, {
         slidesPerView: 4,
         spaceBetween: 20,
         loop: false,
         modules: [Navigation, Scrollbar],
         navigation: {
-          nextEl: this.recommendedNextRef.nativeElement,
-          prevEl: this.recommendedPrevRef.nativeElement,
+          nextEl: this.newArrivalNextRef.nativeElement,
+          prevEl: this.newArrivalPrevRef.nativeElement,
         },
         scrollbar: {
-          el: this.recommendedSliderRef.nativeElement.querySelector('.swiper-scrollbar'),
+          el: this.newArrivalSliderRef.nativeElement.querySelector('.swiper-scrollbar'),
           draggable: true,
         },
         breakpoints: {
@@ -84,11 +84,11 @@ export class RecommendedProductsComponent implements AfterViewInit {
 
   // ====================== CART METHODS ======================
 
-  addToCart(product: RecommendedProducts) {
-    this.recommendedService.addToCart(product);
+  addToCart(product: NewArrivalProducts) {
+    this.newArrivalService.addToCart(product);
   }
 
-  isItemInCart(item: RecommendedProducts): boolean {
+  isItemInCart(item: NewArrivalProducts): boolean {
     return this.cartItems.some(p => p.id === item.id);
   }
 }

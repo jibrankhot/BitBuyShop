@@ -5,6 +5,7 @@ import { HeroBannerComponent } from "../shared/components/hero-banner/hero-banne
 import { RecommendedProductsComponent } from '../../workspaces/RecommendedProducts/recommendedproducts';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { FeatureCurationsComponent } from '../../workspaces/FeatureCurations/featurecurations';
+import { NewArrivalProductsComponent } from '../../workspaces/NewArrivalProducts/newarrivalproducts';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ import { FeatureCurationsComponent } from '../../workspaces/FeatureCurations/fea
   styleUrls: ['./home.component.scss'],
   imports: [SharedModule, FashionHeaderComponent, HeroBannerComponent,
     // CategoryComponent,
-    RecommendedProductsComponent,
+    RecommendedProductsComponent, NewArrivalProductsComponent,
     // AllProductsComponent, FeaturedProductsComponent,
     // TrendingItemsComponent, BestSellingItemsComponent,
     // TestimonialComponent, FeatureComponent, InstagramAreaComponent,

@@ -1,37 +1,34 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RecommendedProducts } from './recommendedproductsmodel';
-import { recommendedProducts } from './RecommendedProductsData';
+import { NewArrivalProducts } from './newarrivalproductsmodel';
+import { newArrivalProducts } from './newarrivalproductsData';
 import { CartService } from '../../app/shared/services/cart.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class RecommendedProductsService {
-    private productsData: RecommendedProducts[] = recommendedProducts;
-    private cartSubject = new BehaviorSubject<RecommendedProducts[]>([]);
+export class NewArrivalProductsService {
+    private productsData: NewArrivalProducts[] = newArrivalProducts;
+    private cartSubject = new BehaviorSubject<NewArrivalProducts[]>([]);
     public cart$ = this.cartSubject.asObservable();
     public filter_offcanvas: boolean = false;
     public activeImg: string | undefined;
 
     constructor(private cartService: CartService) {
-        // Subscribe to CartService to sync the cart
-        this.cartService.cart$.subscribe((cartItems) => {
-            // Update local cart subject whenever CartService changes
-            this.cartSubject.next(cartItems);
-        });
+        // Sync cart with main CartService
+        this.cartService.getCartProducts(); // initialize if needed
     }
 
     handleImageActive(img: string) {
         this.activeImg = img;
     }
 
-    public get products(): Observable<RecommendedProducts[]> {
+    public get products(): Observable<NewArrivalProducts[]> {
         return of(this.productsData);
     }
 
-    public getProductById(id: string): Observable<RecommendedProducts | undefined> {
+    public getProductById(id: string): Observable<NewArrivalProducts | undefined> {
         return this.products.pipe(
             map(items => {
                 const product = items.find(p => p.id === id);
@@ -41,13 +38,13 @@ export class RecommendedProductsService {
         );
     }
 
-    public filterProducts(filter: string[] = []): Observable<RecommendedProducts[]> {
+    public filterProducts(filter: string[] = []): Observable<NewArrivalProducts[]> {
         return this.products.pipe(
             map(items => items.filter(item => !filter.length || filter.some(tag => item.tags?.includes(tag))))
         );
     }
 
-    public sortProducts(products: RecommendedProducts[], sortBy: string): RecommendedProducts[] {
+    public sortProducts(products: NewArrivalProducts[], sortBy: string): NewArrivalProducts[] {
         if (sortBy === 'asc') return [...products].sort((a, b) => a.id.localeCompare(b.id));
         if (sortBy === 'low') return [...products].sort((a, b) => a.price - b.price);
         if (sortBy === 'high') return [...products].sort((a, b) => b.price - a.price);
@@ -59,36 +56,13 @@ export class RecommendedProductsService {
         return Math.max(...this.productsData.map(p => p.price));
     }
 
-    public getPager(totalItems: number, currentPage: number = 1, pageSize: number = 9) {
-        const totalPages = Math.ceil(totalItems / pageSize);
-        const paginateRange = 3;
-
-        if (currentPage < 1) currentPage = 1;
-        else if (currentPage > totalPages) currentPage = totalPages;
-
-        let startPage: number, endPage: number;
-        if (totalPages <= 5) {
-            startPage = 1; endPage = totalPages;
-        } else if (currentPage < paginateRange - 1) {
-            startPage = 1; endPage = startPage + paginateRange - 1;
-        } else {
-            startPage = currentPage - 1; endPage = currentPage + 1;
-        }
-
-        const startIndex = (currentPage - 1) * pageSize;
-        const endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
-        const pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i);
-
-        return { totalItems, currentPage, pageSize, totalPages, startPage, endPage, startIndex, endIndex, pages };
-    }
-
     // ===================== CART METHODS =====================
 
-    getCart(): RecommendedProducts[] {
+    getCart(): NewArrivalProducts[] {
         return this.cartSubject.value;
     }
 
-    addToCart(product: RecommendedProducts) {
+    addToCart(product: NewArrivalProducts) {
         if (product.quantity <= 0) return;
 
         const cart = [...this.cartSubject.value];
@@ -104,7 +78,7 @@ export class RecommendedProductsService {
         this.cartService.addCartProduct(product); // sync with main cart
     }
 
-    decrementFromCart(product: RecommendedProducts) {
+    decrementFromCart(product: NewArrivalProducts) {
         const cart = this.cartSubject.value.map(p => {
             if (p.id === product.id && p.orderQuantity && p.orderQuantity > 1) {
                 p.orderQuantity!--;
@@ -114,10 +88,10 @@ export class RecommendedProductsService {
         this.cartSubject.next(cart);
     }
 
-    removeFromCart(product: RecommendedProducts) {
+    removeFromCart(product: NewArrivalProducts) {
         const cart = this.cartSubject.value.filter(p => p.id !== product.id);
         this.cartSubject.next(cart);
-        this.cartService.removeCartProduct(product); // keep CartService synced
+        this.cartService.removeCartProduct(product); // sync with main cart
     }
 
     clearCart() {

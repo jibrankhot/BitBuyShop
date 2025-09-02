@@ -2,6 +2,7 @@ import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { IProduct } from '../types/product-type';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class CartService {
   private cart_products: IProduct[] = [];
   private isBrowser: boolean;
 
+  // NEW: reactive cart observable
+  private cartSubject = new BehaviorSubject<IProduct[]>([]);
+  public cart$ = this.cartSubject.asObservable();
+
   constructor(
     private toastrService: ToastrService,
     @Inject(PLATFORM_ID) private platformId: Object
@@ -20,6 +25,7 @@ export class CartService {
 
     if (this.isBrowser) {
       this.cart_products = JSON.parse(localStorage.getItem('cart_products') || '[]');
+      this.cartSubject.next(this.cart_products); // initialize observable
     }
   }
 
@@ -56,6 +62,7 @@ export class CartService {
     }
 
     this.saveCart();
+    this.cartSubject.next(this.cart_products); // update observable
   }
 
   quantityDecrement(payload: IProduct) {
@@ -67,12 +74,14 @@ export class CartService {
       return { ...item };
     });
     this.saveCart();
+    this.cartSubject.next(this.cart_products);
   }
 
   removeCartProduct(payload: IProduct) {
     this.cart_products = this.cart_products.filter(p => p.id !== payload.id);
     this.toastrService.error(`${payload.title} removed from cart`);
     this.saveCart();
+    this.cartSubject.next(this.cart_products); // update observable
   }
 
   clear_cart() {
@@ -80,6 +89,7 @@ export class CartService {
     if (confirmMsg) {
       this.cart_products = [];
       this.saveCart();
+      this.cartSubject.next(this.cart_products);
     }
   }
 

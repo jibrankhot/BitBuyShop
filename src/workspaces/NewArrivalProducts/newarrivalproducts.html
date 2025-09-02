@@ -1,10 +1,13 @@
-<section class="recommended-section pb-95">
+<section class="new-arrival-section pb-95">
    <div class="container">
       <div class="row">
          <div class="col-xl-12 mb-40">
-            <h3 class="recommended-heading">Recommended For You</h3>
-            <p class="recommended-subtext">
-               Explore what the Andamen community can't get enough of right now.
+            <h3 class="new-arrival-heading">
+               <span class="heading-badge badge-new">New</span>
+               New Arrivals
+            </h3>
+            <p class="new-arrival-subtext">
+               Explore the latest additions to our collection.
             </p>
          </div>
       </div>
@@ -13,15 +16,27 @@
          <div class="col-xl-12 position-relative">
 
             <!-- Outer Carousel Navigation Buttons -->
-            <div #recommendedPrev class="outer-swiper-btn prev-btn"><i class="fas fa-chevron-left"></i></div>
-            <div #recommendedNext class="outer-swiper-btn next-btn"><i class="fas fa-chevron-right"></i></div>
+            <div #newArrivalPrev class="outer-swiper-btn prev-btn">
+               <i class="fas fa-chevron-left"></i>
+            </div>
+            <div #newArrivalNext class="outer-swiper-btn next-btn">
+               <i class="fas fa-chevron-right"></i>
+            </div>
 
             <!-- Overall slider -->
-            <div #recommendedSlider class="recommended-slider swiper-container">
+            <div #newArrivalSlider class="new-arrival-slider swiper-container">
                <div class="swiper-wrapper">
 
-                  <div *ngFor="let item of recommendedProducts; let i = index" class="recommended-card swiper-slide">
-                     <div class="recommended-thumb">
+                  <div *ngFor="let item of newArrivalProducts; let i = index" class="new-arrival-card swiper-slide">
+                     <div class="new-arrival-thumb">
+
+                        <span *ngIf="item.badge" [ngClass]="{
+                     
+                        'badge-new': item.badge.toLowerCase() === 'new',
+                        'badge-sale': item.badge.toLowerCase() === 'sale'
+                      }" class="product-badge">
+                           {{ item.badge }}
+                        </span>
 
                         <!-- Nested Product Carousel -->
                         <div #productCarousel class="product-carousel swiper-container">
@@ -51,14 +66,14 @@
 
                      </div>
 
-                     <div class="recommended-content">
-                        <h3 class="recommended-title">
+                     <div class="new-arrival-content">
+                        <h3 class="new-arrival-title">
                            <a [routerLink]="['/shop/shop-details', item.id]">{{ item.title }}</a>
                         </h3>
-                        <p class="recommended-price">₹ {{ item.price }}</p>
+                        <p class="new-arrival-price">₹ {{ item.price }}</p>
                      </div>
-
                   </div>
+                  <!-- /Product Card -->
 
                </div>
                <div class="swiper-scrollbar"></div>
