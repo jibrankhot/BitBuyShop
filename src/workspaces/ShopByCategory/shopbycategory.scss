@@ -1,0 +1,98 @@
+.shop-by-category-section {
+  max-width: 1200px;
+  margin: 0 auto 60px;
+  padding: 40px 0 60px 0;
+  font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.shop-by-category-heading {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: inline-block;
+
+  @media (max-width: 991px) { font-size: 28px; }
+  @media (max-width: 767px) { font-size: 24px; }
+  @media (max-width: 480px) { font-size: 20px; }
+}
+
+.shop-by-category-subtext {
+  font-size: 16px;
+  color: #6e6e6e;
+  margin: 0;
+
+  @media (max-width: 991px) { font-size: 14px; }
+  @media (max-width: 767px) { font-size: 13px; }
+}
+
+/* ======================= Category Card ======================= */
+.category-card {
+  text-align: center;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+  }
+
+  .category-thumb {
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .category-title {
+      margin-top: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #222;
+      transition: color 0.3s ease;
+
+      &:hover { color: #20a286; }
+
+      @media (max-width: 480px) { font-size: 14px; }
+    }
+  }
+}
+
+/* ======================= Outer Carousel Navigation ======================= */
+.outer-swiper-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  cursor: pointer;
+  z-index: 20;
+
+  i { font-size: 16px; color: #111; }
+
+  &.prev-btn { left: -50px; }
+  &.next-btn { right: -50px; }
+
+  @media (max-width: 991px) {
+    &.prev-btn { left: -30px; }
+    &.next-btn { right: -30px; }
+  }
+
+  @media (max-width: 767px) {
+    width: 32px; height: 32px;
+    i { font-size: 14px; }
+  }
+}
+
+/* ======================= Swiper Scrollbar ======================= */
+.swiper-scrollbar { display: none; }

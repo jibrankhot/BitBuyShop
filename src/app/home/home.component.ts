@@ -6,6 +6,7 @@ import { RecommendedProductsComponent } from '../../workspaces/RecommendedProduc
 import { FooterComponent } from '../shared/footer/footer.component';
 import { FeatureCurationsComponent } from '../../workspaces/FeatureCurations/featurecurations';
 import { NewArrivalProductsComponent } from '../../workspaces/NewArrivalProducts/newarrivalproducts';
+import { ShopByCategoryComponent } from "../../workspaces/ShopByCategory/shopbycategory";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,7 @@ import { NewArrivalProductsComponent } from '../../workspaces/NewArrivalProducts
     // AllProductsComponent, FeaturedProductsComponent,
     // TrendingItemsComponent, BestSellingItemsComponent,
     // TestimonialComponent, FeatureComponent, InstagramAreaComponent,
-    FooterComponent, FeatureCurationsComponent]
+    FooterComponent, FeatureCurationsComponent, ShopByCategoryComponent]
 })
 export class HomeComponent {
   @Input() style_2: Boolean | undefined;
