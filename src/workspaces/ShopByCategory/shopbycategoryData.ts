@@ -4,49 +4,49 @@ export const shopByCategories: ShopByCategory[] = [
   {
     id: '1',
     name: "Women's Clothing",
-    image: 'assets/image/new-arrivals/Beige Stripe Linen Shirt1.webp',
+    image: 'assets/Images/ShopByCategory/BeigeStripeLinenShirt1.webp',
     link: '/category/women-clothing'
   },
   {
     id: '2',
     name: "Men's Clothing",
-    image: 'assets/image/new-arrivals/Mint Mist Linen Shirt1.webp', // placeholder
+    image: 'assets/Images/ShopByCategory/MintMistLinenShirt1.webp',
     link: '/category/men-clothing'
   },
   {
     id: '3',
     name: "Kids",
-    image: 'assets/image/new-arrivals/Mantis Green Linen Shirt1.webp', // placeholder
+    image: 'assets/Images/ShopByCategory/MantisGreenLinenShirt1.webp',
     link: '/category/kids'
   },
   {
     id: '4',
     name: "Accessories",
-    image: 'assets/image/new-arrivals/Chinoise Stripe Linen Shirt1.webp', // placeholder
+    image: 'assets/Images/ShopByCategory/ChinoiseStripeLinenShirt1.webp',
     link: '/category/accessories'
   },
   {
-    id: '1',
+    id: '5',
     name: "Women's Clothing",
-    image: 'assets/image/new-arrivals/Beige Stripe Linen Shirt1.webp',
+    image: 'assets/Images/ShopByCategory/BeigeStripeLinenShirt1.webp',
     link: '/category/women-clothing'
   },
   {
-    id: '2',
+    id: '6',
     name: "Men's Clothing",
-    image: 'assets/image/new-arrivals/Mint Mist Linen Shirt1.webp', // placeholder
+    image: 'assets/Images/ShopByCategory/MintMistLinenShirt1.webp',
     link: '/category/men-clothing'
   },
   {
-    id: '3',
+    id: '7',
     name: "Kids",
-    image: 'assets/image/new-arrivals/Mantis Green Linen Shirt1.webp', // placeholder
+    image: 'assets/Images/ShopByCategory/MantisGreenLinenShirt1.webp',
     link: '/category/kids'
   },
   {
-    id: '4',
+    id: '8',
     name: "Accessories",
-    image: 'assets/image/new-arrivals/Chinoise Stripe Linen Shirt1.webp', // placeholder
+    image: 'assets/Images/ShopByCategory/ChinoiseStripeLinenShirt1.webp',
     link: '/category/accessories'
   }
 ];

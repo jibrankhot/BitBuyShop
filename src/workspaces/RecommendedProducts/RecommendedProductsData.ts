@@ -4,13 +4,13 @@ export const recommendedProducts: RecommendedProducts[] = [
   {
     id: "1",
     sku: "BEIGE-STRIPE-LINEN-SHIRT",
-    img: "assets/image/recommended/Beige Stripe Linen Shirt1.webp",
+    img: "assets/Images/RecomendedImages/BeigeStripeLinenShirt1.webp",
     title: "Beige Stripe Linen Shirt",
     slug: "beige-stripe-linen-shirt",
     unit: "10pcs",
     imageURLs: [
-      { color: { name: "Front View", clrCode: "#D8CAB8" }, img: "assets/image/recommended/Beige Stripe Linen Shirt1.webp" },
-      { color: { name: "Back View", clrCode: "#D8CAB8" }, img: "assets/image/recommended/Beige Stripe Linen Shirt2.webp" }
+      { color: { name: "Front View", clrCode: "#D8CAB8" }, img: "assets/Images/RecomendedImages/BeigeStripeLinenShirt1.webp" },
+      { color: { name: "Back View", clrCode: "#D8CAB8" }, img: "assets/Images/RecomendedImages/BeigeStripeLinenShirt2.webp" }
     ],
     parent: "Clothing",
     children: "Women's",
@@ -36,13 +36,13 @@ export const recommendedProducts: RecommendedProducts[] = [
   {
     id: "2",
     sku: "MINT-MIST-LINEN-SHIRT",
-    img: "assets/image/recommended/Mint Mist Linen Shirt1.webp",
+    img: "assets/Images/RecomendedImages/MintMistLinenShirt1.webp",
     title: "Mint Mist Linen Shirt",
     slug: "mint-mist-linen-shirt",
     unit: "10pcs",
     imageURLs: [
-      { color: { name: "Front View", clrCode: "#D4E8D3" }, img: "assets/image/recommended/Mint Mist Linen Shirt1.webp" },
-      { color: { name: "Back View", clrCode: "#D4E8D3" }, img: "assets/image/recommended/Mint Mist Linen Shirt2.webp" }
+      { color: { name: "Front View", clrCode: "#D4E8D3" }, img: "assets/Images/RecomendedImages/MintMistLinenShirt1.webp" },
+      { color: { name: "Back View", clrCode: "#D4E8D3" }, img: "assets/Images/RecomendedImages/MintMistLinenShirt2.webp" }
     ],
     parent: "Clothing",
     children: "Women's",
@@ -68,13 +68,13 @@ export const recommendedProducts: RecommendedProducts[] = [
   {
     id: "3",
     sku: "MANTIS-GREEN-LINEN-SHIRT",
-    img: "assets/image/recommended/Mantis Green Linen Shirt1.webp",
+    img: "assets/Images/RecomendedImages/MantisGreenLinenShirt1.webp",
     title: "Mantis Green Linen Shirt",
     slug: "mantis-green-linen-shirt",
     unit: "10pcs",
     imageURLs: [
-      { color: { name: "Front View", clrCode: "#7DA87B" }, img: "assets/image/recommended/Mantis Green Linen Shirt1.webp" },
-      { color: { name: "Back View", clrCode: "#7DA87B" }, img: "assets/image/recommended/Mantis Green Linen Shirt2.webp" }
+      { color: { name: "Front View", clrCode: "#7DA87B" }, img: "assets/Images/RecomendedImages/MantisGreenLinenShirt1.webp" },
+      { color: { name: "Back View", clrCode: "#7DA87B" }, img: "assets/Images/RecomendedImages/MantisGreenLinenShirt2.webp" }
     ],
     parent: "Clothing",
     children: "Women's",
@@ -100,13 +100,13 @@ export const recommendedProducts: RecommendedProducts[] = [
   {
     id: "4",
     sku: "CHINOISE-STRIPE-LINEN-SHIRT",
-    img: "assets/image/recommended/Chinoise Stripe Linen Shirt1.webp",
+    img: "assets/Images/RecomendedImages/ChinoiseStripeLinenShirt1.webp",
     title: "Chinoise Stripe Linen Shirt",
     slug: "chinoise-stripe-linen-shirt",
     unit: "10pcs",
     imageURLs: [
-      { color: { name: "Front View", clrCode: "#EBDAD1" }, img: "assets/image/recommended/Chinoise Stripe Linen Shirt1.webp" },
-      { color: { name: "Back View", clrCode: "#EBDAD1" }, img: "assets/image/recommended/Chinoise Stripe Linen Shirt2.webp" }
+      { color: { name: "Front View", clrCode: "#EBDAD1" }, img: "assets/Images/RecomendedImages/ChinoiseStripeLinenShirt1.webp" },
+      { color: { name: "Back View", clrCode: "#EBDAD1" }, img: "assets/Images/RecomendedImages/ChinoiseStripeLinenShirt2.webp" }
     ],
     parent: "Clothing",
     children: "Women's",
@@ -132,13 +132,13 @@ export const recommendedProducts: RecommendedProducts[] = [
   {
     id: "5",
     sku: "CELADON-GREEN-LINEN-SHIRT",
-    img: "assets/image/recommended/Celadon Green Linen Shirt1.webp",
+    img: "assets/Images/RecomendedImages/CeladonGreenLinenShirt1.webp",
     title: "Celadon Green Linen Shirt",
     slug: "celadon-green-linen-shirt",
     unit: "10pcs",
     imageURLs: [
-      { color: { name: "Front View", clrCode: "#B8D9C5" }, img: "assets/image/recommended/Celadon Green Linen Shirt1.webp" },
-      { color: { name: "Back View", clrCode: "#B8D9C5" }, img: "assets/image/recommended/Celadon Green Linen Shirt2.webp" }
+      { color: { name: "Front View", clrCode: "#B8D9C5" }, img: "assets/Images/RecomendedImages/CeladonGreenLinenShirt1.webp" },
+      { color: { name: "Back View", clrCode: "#B8D9C5" }, img: "assets/Images/RecomendedImages/CeladonGreenLinenShirt2.webp" }
     ],
     parent: "Clothing",
     children: "Women's",
