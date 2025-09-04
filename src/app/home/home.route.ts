@@ -4,5 +4,5 @@ import { HomeComponent } from "./home.component";
 
 export const homeRoutes: Routes = [
     { path: 'fashion', canActivate: [authGuard], component: HomeComponent, title: 'Home Fashion' },
-    { path: '**', redirectTo: '/notfound', pathMatch: 'full' }
+    { path: '', redirectTo: 'fashion', pathMatch: 'full' }
 ];

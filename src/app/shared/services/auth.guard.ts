@@ -1,24 +1,28 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivateFn, Router } from '@angular/router';
+import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 
-export const authGuard: CanActivateFn = (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
+  const auth = inject(Auth);
 
-  const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
+  return new Promise<boolean>((resolve) => {
+    onAuthStateChanged(auth, (user) => {
+      const path = route.routeConfig?.path || '';
 
-  const publicRoutes = ['login', 'register', 'forgot'];
+      const publicRoutes = ['login', 'register', 'forgot'];
+      const protectedRoutes = ['profile', 'checkout', 'contact', 'coupons'];
 
-  if (isLoggedIn && publicRoutes.includes(route.routeConfig?.path || '')) {
-    router.navigate(['/pages/profile']);
-    return false;
-  }
-
-  const protectedRoutes = ['profile', 'checkout', 'contact', 'coupons'];
-  if (!isLoggedIn && protectedRoutes.includes(route.routeConfig?.path || '')) {
-    alert('Not a valid user. Please login first!');
-    router.navigate(['/pages/login']);
-    return false;
-  }
-
-  return true;
+      if (user && publicRoutes.includes(path)) {
+        router.navigate(['/pages/profile']);
+        resolve(false);
+      } else if (!user && protectedRoutes.includes(path)) {
+        alert('Not a valid user. Please login first!');
+        router.navigate(['/pages/login']);
+        resolve(false);
+      } else {
+        resolve(true);
+      }
+    });
+  });
 };
